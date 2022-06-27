@@ -74,7 +74,7 @@ def uniform_grid_spectra_mean(DALEC_log, spect_wavelengths, nsteps=601, min_wave
     Lu_tot = np.zeros((nsteps,))
     Lsky_tot = np.zeros((nsteps,))
     Ed_tot = np.zeros((nsteps,))
-    # it is slowwwwww! - fix this ASAP
+
     for sample in DALEC_log.index.get_level_values('Sample #').unique():
         sample_i = DALEC_log.loc[sample, :]
         Lu_tot += uniform_grid_spectra(sample_i, spect_wavelengths, param='Lu', nsteps=nsteps)[:, 1]
