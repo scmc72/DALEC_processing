@@ -12,7 +12,7 @@ def load_DALEC_spect_wavelengths(filepath, header=15):
                                )
     return spect_wavelengths # these are just the mappings of wavelength to pixel number
 
-def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIndex=True):
+def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIndex=True, removeSaturated=True):
     """
     loads DALEC log file (excluding spectral wavelength mappings)
     optionally returns log file in long format
@@ -24,6 +24,12 @@ def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIn
                             dayfirst=True,
                             infer_datetime_format=True,
                             )
+    
+    # any row with invalid UTC date can be removed
+    DALEC_log.drop(DALEC_log[DALEC_log[' UTC Date'].isna()].index, inplace = True)
+    # this removes the duplicated headings
+    DALEC_log.drop(DALEC_log[DALEC_log[' UTC Date'] == 'UTC Date'].index, inplace = True)
+    
     if dropNA:
         DALEC_log.dropna(inplace=True, axis=0,)
         
@@ -42,6 +48,15 @@ def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIn
             DALEC_log.index = DALEC_log.index.set_levels([idx.levels[0].astype(int), idx.levels[1]])
         # sort index
         DALEC_log.sort_index(inplace=True)
+        # change saturation flag to int.
+        DALEC_log[' Saturation Flag'] = DALEC_log[' Saturation Flag'].astype(int)
+        # format column as datetimes
+        DALEC_log[' UTC Date'] = pd.to_datetime(DALEC_log[' UTC Date'], dayfirst=True, infer_datetime_format=True)
+        # remove saturated readings - this hasn't been tested on a df which isn't in long format!
+        if removeSaturated:
+            indSat = DALEC_log[DALEC_log[' Saturation Flag'] == 1].index.get_level_values(0)
+            if list(indSat): # checks if the list is empty
+                DALEC_log.drop(indSat, level=0, axis=0, inplace=True)
 
     return DALEC_log
 
@@ -172,7 +187,8 @@ def multiLogLoad(filepath,
         # remove saturated readings - this hasn't been tested on a df which isn't in long format!
         if removeSaturated:
             indSat = table[table[' Saturation Flag'] == 1].index.get_level_values(0)
-            table.drop(indSat, level=0, axis=0, inplace=True)
+            if list(indSat): # checks if the list is empty
+                table.drop(indSat, level=0, axis=0, inplace=True)
         
         tables[name] = table
     return tables

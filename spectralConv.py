@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import dalecLoad
 
 def spectral_conv(R, S, x):
     '''
@@ -22,3 +23,36 @@ def SD_band_calc(RSR_doves, R, x):
         col_SR = RSR_doves[col].values
         R_SD.append(spectral_conv(R, col_SR, x))
     return np.array(R_SD)
+
+def SD_Rrs(RSR_doves, DALEC_sample, spect_wavelengths, x=None, doves_wavelengths=None, RHO=0.028, nsteps=601):
+    '''
+    does SD band calc for Lu, Lsky and Ed for a given DALEC sample, then converts this to Rrs using RHO
+    returns a df with Lu, Lsky, Ed and Rrs
+    '''
+    Lu = dalecLoad.uniform_grid_spectra(DALEC_sample, spect_wavelengths, param='Lu', nsteps=nsteps)[:, 1]
+    Lsky = dalecLoad.uniform_grid_spectra(DALEC_sample, spect_wavelengths, param='Lsky', nsteps=nsteps)[:, 1]
+    Ed = dalecLoad.uniform_grid_spectra(DALEC_sample, spect_wavelengths, param='Ed', nsteps=nsteps)[:, 1]
+    
+    if x is None:
+        x = RSR_doves['Wavelength (nm)'].values
+    
+    Lw = Lu - (RHO * Lsky)
+    
+    Lw_SD = SD_band_calc(RSR_doves, Lw, x)
+    Lu_SD = SD_band_calc(RSR_doves, Lu, x)
+    Lsky_SD = SD_band_calc(RSR_doves, Lsky, x)
+    Ed_SD = SD_band_calc(RSR_doves, Ed, x)
+    Rrs_SD = Lw_SD / Ed_SD
+    
+    if doves_wavelengths is None:
+        doves_wavelengths = [443, 490, 531, 565, 610, 665, 705, 865]
+    
+    df_out = pd.DataFrame(data={'Wavelength': doves_wavelengths,
+                           'Lu': Lu_SD, 
+                           'Lw': Lw_SD,
+                           'Lsky': Lsky_SD,
+                           'Ed': Ed_SD,
+                           'Rrs': Rrs_SD})
+    
+    return df_out
+
