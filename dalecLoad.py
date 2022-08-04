@@ -18,11 +18,31 @@ def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIn
     optionally returns log file in long format
     option to convert sample no. index to an integer, or to keep as a string (integerIndex)
     """
+    # ideally specify dtype of all rows for efficiency and to prevent bad things - TODO!
+    # need to specify str for lots of columns as these have some rows which contain stuff we need to remove
     DALEC_log = pd.read_csv(filepath,
                             header=header,
                             parse_dates=True,
                             dayfirst=True,
                             infer_datetime_format=True,
+                            dtype={'Sample #': str,
+                                   ' Lat': str, 
+                                   ' Lon': str,
+                                   ' Solar Azi': str,
+                                   ' Solar Elev': str,
+                                   ' Relaz': str,
+                                   ' Heading': str,
+                                   ' Pitch': str,
+                                   ' Roll': str,
+                                   ' Gearpos': str,
+                                   ' Voltage': str,
+                                   ' Temp': str,
+                                   'Channel': str,
+                                   ' Integration Time': str,
+                                   ' Saturation Flag': str,
+                                   ' Spec[21]': str,
+                                   ' Spec[22]': str,
+                                  },
                             )
     
     # any row with invalid UTC date can be removed
@@ -144,11 +164,31 @@ def multiLogLoad(filepath,
     - depending on how the logfile was generated, adjusting 'sep' might allow for different situations...
     - should probably think a bit more about this for a continuous logging application
     """
+    # ideally specify dtype of all rows for efficiency and to prevent bad things - TODO!
+    # need to specify str for lots of columns as these have some rows which contain stuff we need to remove
     df = pd.read_csv(filepath,
                      header=header,
                      parse_dates=True,
                      dayfirst=True,
                      infer_datetime_format=True,
+                     dtype={'Sample #': str,
+                                   ' Lat': str, 
+                                   ' Lon': str,
+                                   ' Solar Azi': str,
+                                   ' Solar Elev': str,
+                                   ' Relaz': str,
+                                   ' Heading': str,
+                                   ' Pitch': str,
+                                   ' Roll': str,
+                                   ' Gearpos': str,
+                                   ' Voltage': str,
+                                   ' Temp': str,
+                                   'Channel': str,
+                                   ' Integration Time': str,
+                                   ' Saturation Flag': str,
+                                   ' Spec[21]': str,
+                                   ' Spec[22]': str,
+                                  },
                      )
     
     groups = df['Sample #'].isin(sep).cumsum()
