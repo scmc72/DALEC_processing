@@ -99,39 +99,68 @@ def uniform_grid_spectra(DALEC_sample, spect_wavelengths, param='Lu', nsteps=200
     
     return out
 
-def uniform_grid_spectra_mean(DALEC_log, spect_wavelengths, nsteps=601, min_waveL=400, max_waveL=1000):
+# just in case I want to use the old version again!
+
+# def uniform_grid_spectra_mean(DALEC_log, spect_wavelengths, nsteps=601, min_waveL=400, max_waveL=1000):
+#     """
+#     - takes mean spectrum from an entire DALEC log file and converts to a uniform grid
+#     - grid is defined by nsteps, min_waveL and max_waveL
+#     - returns a pandas DF with Lu_mean, Lsky_mean and Ed_mean
+#     """
+#     # this is the bad code way to do it!
+#     Lu_tot = np.zeros((nsteps,))
+#     Lsky_tot = np.zeros((nsteps,))
+#     Ed_tot = np.zeros((nsteps,))
+#     # this is slowwwww - should consider if it's worth taking the mean before regridding?
+#     for sample in DALEC_log.index.get_level_values('Sample #').unique():
+#         sample_i = DALEC_log.loc[sample, :]
+#         Lu_tot += uniform_grid_spectra(sample_i, spect_wavelengths, param='Lu', nsteps=nsteps)[:, 1]
+#         Lsky_tot += uniform_grid_spectra(sample_i, spect_wavelengths, param='Lsky', nsteps=nsteps)[:, 1]
+#         Ed_tot += uniform_grid_spectra(sample_i, spect_wavelengths, param='Ed', nsteps=nsteps)[:, 1]
+
+#     Lu_mean = Lu_tot/nsteps
+#     Lsky_mean = Lsky_tot/nsteps
+#     Ed_mean = Ed_tot/nsteps
+    
+# #     # better way like this, which takes mean then does spectra regridding stuff
+#       # currently not working! need to work on this some more haha
+# #     DALEC_log.mean(axis=0, level='Sample #', numeric_only=True, inplace=True)
+# #     Lu_mean = dalecLoad.uniform_grid_spectra(DALEC_log, spect_wavelengths, param='Lu', nsteps=nsteps)
+# #     Lsky_mean = dalecLoad.uniform_grid_spectra(DALEC_log, spect_wavelengths, param='Lsky', nsteps=nsteps)
+# #     Ed_mean = dalecLoad.uniform_grid_spectra(DALEC_log, spect_wavelengths, param='Ed', nsteps=nsteps)
+    
+#     # might be nice to output Rrs too?
+#     wavelengths = uniform_grid_spectra(sample_i, spect_wavelengths, param='Lu', nsteps=nsteps)[:, 0]
+#     df_out = pd.DataFrame(data={'Wavelength': wavelengths,
+#                                'Lu_mean': Lu_mean, 
+#                                'Lsky_mean': Lsky_mean,
+#                                'Ed_mean': Ed_mean})
+#     return df_out
+
+
+def uniform_grid_spectra_mean(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000):
     """
     - takes mean spectrum from an entire DALEC log file and converts to a uniform grid
     - grid is defined by nsteps, min_waveL and max_waveL
     - returns a pandas DF with Lu_mean, Lsky_mean and Ed_mean
     """
-    # this is the bad code way to do it!
-    Lu_tot = np.zeros((nsteps,))
-    Lsky_tot = np.zeros((nsteps,))
-    Ed_tot = np.zeros((nsteps,))
-
-    for sample in DALEC_log.index.get_level_values('Sample #').unique():
-        sample_i = DALEC_log.loc[sample, :]
-        Lu_tot += uniform_grid_spectra(sample_i, spect_wavelengths, param='Lu', nsteps=nsteps)[:, 1]
-        Lsky_tot += uniform_grid_spectra(sample_i, spect_wavelengths, param='Lsky', nsteps=nsteps)[:, 1]
-        Ed_tot += uniform_grid_spectra(sample_i, spect_wavelengths, param='Ed', nsteps=nsteps)[:, 1]
-
-    Lu_mean = Lu_tot/nsteps
-    Lsky_mean = Lsky_tot/nsteps
-    Ed_mean = Ed_tot/nsteps
+    # this is a much more optimal way than previously! - 
+    df = DALEC_log.copy() # not sure if neccesary but perhaps best to be on the safe side?
+    # setting spectral_ind as an index might be useful for other stuff too?
+    df.set_index('spectral_ind', append=True, inplace=True)
+    df = df.groupby(level=[' Channel', 'spectral_ind']).mean(numeric_only=True)
+    Lu_mean = uniform_grid_spectra(df, spect_wavelengths, param='Lu', nsteps=nsteps)
+    Lsky_mean = uniform_grid_spectra(df, spect_wavelengths, param='Lsky', nsteps=nsteps)
+    Ed_mean = uniform_grid_spectra(df, spect_wavelengths, param='Ed', nsteps=nsteps)
     
-#     # better way like this, which takes mean then does spectra regridding stuff
-      # currently not working! need to work on this some more haha
-#     DALEC_log.mean(axis=0, level='Sample #', numeric_only=True, inplace=True)
-#     Lu_mean = dalecLoad.uniform_grid_spectra(DALEC_log, spect_wavelengths, param='Lu', nsteps=nsteps)
-#     Lsky_mean = dalecLoad.uniform_grid_spectra(DALEC_log, spect_wavelengths, param='Lsky', nsteps=nsteps)
-#     Ed_mean = dalecLoad.uniform_grid_spectra(DALEC_log, spect_wavelengths, param='Ed', nsteps=nsteps)
+    Rrs_mean = (Lu_mean[:, 1] - (RHO * Lsky_mean[:, 1])) / Ed_mean[:, 1]
     
-    wavelengths = uniform_grid_spectra(sample_i, spect_wavelengths, param='Lu', nsteps=nsteps)[:, 0]
-    df_out = pd.DataFrame(data={'Wavelength': wavelengths,
-                               'Lu_mean': Lu_mean, 
-                               'Lsky_mean': Lsky_mean,
-                               'Ed_mean': Ed_mean})
+    # might be nice to output Rrs too?
+    df_out = pd.DataFrame(data={'Wavelength': Lu_mean[:, 0],
+                               'Lu_mean': Lu_mean[:, 1], 
+                               'Lsky_mean': Lsky_mean[:, 1],
+                               'Ed_mean': Ed_mean[:, 1],
+                               'Rrs_mean': Rrs_mean})
     return df_out
 
 def uniform_grid_spectra_Rrs(DALEC_sample, spect_wavelengths, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000):
