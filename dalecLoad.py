@@ -162,28 +162,98 @@ def uniform_grid_spectra_mean(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=60
                                'Rrs_mean': Rrs_mean})
     return df_out
 
-def uniform_grid_spectra_stats(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000):
+# def uniform_grid_spectra_stats(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000):
+#     """
+#     - finds summary stats from an entire DALEC log file and converts to a uniform grid
+#     - grid is defined by nsteps, min_waveL and max_waveL
+#     - returns a pandas DF with Lu_mean, Lsky_mean and Ed_mean
+#     """
+#     # this is a much more optimal way than previously! - 
+#     df = DALEC_log.copy() # not sure if neccesary but perhaps best to be on the safe side?
+#     # setting spectral_ind as an index might be useful for other stuff too?
+#     df.set_index('spectral_ind', append=True, inplace=True)
+#     df = df.groupby(level=[' Channel', 'spectral_ind']).median(numeric_only=True)
+#     Lu_mean = uniform_grid_spectra(df, spect_wavelengths, param='Lu', nsteps=nsteps)
+#     Lsky_mean = uniform_grid_spectra(df, spect_wavelengths, param='Lsky', nsteps=nsteps)
+#     Ed_mean = uniform_grid_spectra(df, spect_wavelengths, param='Ed', nsteps=nsteps)
+    
+#     Rrs_mean = (Lu_mean[:, 1] - (RHO * Lsky_mean[:, 1])) / Ed_mean[:, 1]
+    
+#     df_out = pd.DataFrame(data={'Wavelength': Lu_mean[:, 0],
+#                                'Lu_mean': Lu_mean[:, 1], 
+#                                'Lsky_mean': Lsky_mean[:, 1],
+#                                'Ed_mean': Ed_mean[:, 1],
+#                                'Rrs_mean': Rrs_mean})
+#     return df_out
+
+def uniform_grid_spectra_stats(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000, 
+                               percentiles=[.25, .5, .75],
+                               fastGridding=True):
     """
     - finds summary stats from an entire DALEC log file and converts to a uniform grid
     - grid is defined by nsteps, min_waveL and max_waveL
     - returns a pandas DF with Lu_mean, Lsky_mean and Ed_mean
     """
-    # this is a much more optimal way than previously! - 
     df = DALEC_log.copy() # not sure if neccesary but perhaps best to be on the safe side?
-    # setting spectral_ind as an index might be useful for other stuff too?
+    
+    # drop saturation flag to prevent this being included in the summary
+    df.drop(labels=' Saturation Flag', axis=1, inplace=True)
     df.set_index('spectral_ind', append=True, inplace=True)
-    df = df.groupby(level=[' Channel', 'spectral_ind']).median(numeric_only=True)
-    Lu_mean = uniform_grid_spectra(df, spect_wavelengths, param='Lu', nsteps=nsteps)
-    Lsky_mean = uniform_grid_spectra(df, spect_wavelengths, param='Lsky', nsteps=nsteps)
-    Ed_mean = uniform_grid_spectra(df, spect_wavelengths, param='Ed', nsteps=nsteps)
     
-    Rrs_mean = (Lu_mean[:, 1] - (RHO * Lsky_mean[:, 1])) / Ed_mean[:, 1]
+    if fastGridding:
+        print('WARNING: fastGridding enabled! - this will produce results much faster,'
+              + ' but works by calculating Rrs before Lu, Lsky, and Ed have been interpolated'
+              + ' to the same wavelength grid. Therefore, Rrs calculation may be inaccurate.')
+        # previously needed to drop the Channel level, but now seems like not required... weird
+        Lu = df.loc[:, 'Lu', :]['Spectral Magnitude']#.droplevel(' Channel')
+        Lsky = df.loc[:, 'Lsky', :]['Spectral Magnitude']#.droplevel(' Channel')
+        Ed = df.loc[:, 'Ed', :]['Spectral Magnitude']#.droplevel(' Channel')
     
-    df_out = pd.DataFrame(data={'Wavelength': Lu_mean[:, 0],
-                               'Lu_mean': Lu_mean[:, 1], 
-                               'Lsky_mean': Lsky_mean[:, 1],
-                               'Ed_mean': Ed_mean[:, 1],
-                               'Rrs_mean': Rrs_mean})
+        df_Rrs = (Lu - (RHO * Lsky)) / Ed
+        df_Rrs = df_Rrs.groupby(level=['spectral_ind']).describe(percentiles=percentiles)
+        wavelength_grid = np.linspace(min_waveL, max_waveL, num=nsteps)
+    
+        y = df_Rrs.values
+        x = spect_wavelengths['Lu'].values
+
+        interp = interpolate.interp1d(x, y, axis=0)
+        Rrs_summary = np.column_stack((wavelength_grid,
+                                   interp(wavelength_grid)))
+        colnames = ['wavelength'] + list(df_Rrs.columns) # get column names
+        df_out = pd.DataFrame(data=Rrs_summary, columns=colnames)
+
+    else:
+        print('WARNING fast gridding disabled. Interpolation of Lu, Lsky and Ed may be VERY SLOW \
+               for datasets with large numbers of samples. Try enabling fastGridding for much faster,\
+               but potentially less accurate results... \n \n \
+               NOTE: "slowGridding" not yet developed. \n \n \
+               RETURNING None')
+
+        df_out = None
+    
+    #df = df.groupby(level=[' Channel', 'spectral_ind']).describe(percentiles=percentiles)
+    
+
+    #Lu_summary = uniform_grid_spectra(df, spect_wavelengths, param='Lu', nsteps=nsteps)
+    # this should have shape (nsteps, 9), where columns are:
+    # wavelength, count, mean, std, min, 25%, 50%, 75%, max
+    # note that cols will be different if length of percentiles arg changes
+    #Lsky_summary = uniform_grid_spectra(df, spect_wavelengths, param='Lsky', nsteps=nsteps)
+    #Ed_summary = uniform_grid_spectra(df, spect_wavelengths, param='Ed', nsteps=nsteps)
+    
+    # performing this calculation with the mean makes sense, but I'm not sure it actually makes sense
+    # for the SD, median etc... NEED TO FIX THIS
+    
+    # options: calc Rrs before regridding and calc'ing percentiles etc. (will be fast)
+    # regrid entire dataset and calc Rrs for everything, then do summary of this directly (will be SLOWWWW)
+    
+    #Rrs_summary = (Lu_summary[:, 1:] - (RHO * Lsky_summary[:, 1:])) / Ed_summary[:, 1:]
+    #Rrs_summary = uniform_grid_spectra(df_Rrs, spect_wavelengths, param='Rrs', nsteps=nsteps)
+    
+    #colnames = ['wavelength'] + [x[1] for x in list(df.columns)] # get column names
+    #data = np.concatenate([Lu_summary[:, 0].reshape(nsteps, 1), Rrs_summary], axis=1)
+#    df_out = pd.DataFrame(data=data, columns=colnames)
+    #df_out = pd.DataFrame(data=Rrs_summary, columns=colnames)
     return df_out
 
 def uniform_grid_spectra_Rrs(DALEC_sample, spect_wavelengths, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000):
