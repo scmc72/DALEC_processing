@@ -45,7 +45,8 @@ def SD_Rrs(RSR_doves, DALEC_sample, spect_wavelengths, x=None, doves_wavelengths
     Rrs_SD = Lw_SD / Ed_SD
     
     if doves_wavelengths is None:
-        doves_wavelengths = [443, 490, 531, 565, 610, 665, 705, 865]
+        # could provide a 
+        doves_wavelengths = [444., 492., 533., 566., 612., 666., 707., 866.]
     
     df_out = pd.DataFrame(data={'Wavelength': doves_wavelengths,
                            'Lu': Lu_SD, 
