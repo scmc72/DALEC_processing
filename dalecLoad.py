@@ -12,7 +12,7 @@ def load_DALEC_spect_wavelengths(filepath, header=15):
                                )
     return spect_wavelengths # these are just the mappings of wavelength to pixel number
 
-def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIndex=True, removeSaturated=True):
+def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIndex=True, removeSaturated=True, parse_dates=True):
     """
     loads DALEC log file (excluding spectral wavelength mappings)
     optionally returns log file in long format
@@ -22,7 +22,7 @@ def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIn
     # need to specify str for lots of columns as these have some rows which contain stuff we need to remove
     DALEC_log = pd.read_csv(filepath,
                             header=header,
-                            parse_dates=True,
+                            parse_dates=parse_dates,
                             dayfirst=True,
                             infer_datetime_format=True,
                             dtype={'Sample #': str,
