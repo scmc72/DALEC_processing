@@ -181,7 +181,7 @@ def load_SD_summarise_multiple_DALEC_days(DALEC_directory, RSR_doves_file='non-D
         DALEC_SD = spectralConv.SD_band_calc(RSR_doves, mean_spect['Rrs_mean'].values,
                                              RSR_doves['Wavelength (nm)'].values)
         DALEC_df_tmp = pd.DataFrame(data=DALEC_SD, columns=[DALEC_col_name])
-        DALEC_df_tmp['Date'] = pd.to_datetime(dalec_log[' UTC Date'].iloc[0])
+        DALEC_df_tmp['Date'] = pd.to_datetime(dalec_log['Datetime'].iloc[0])
         if dateOnly:
             DALEC_df_tmp['Date'] = DALEC_df_tmp['Date'].dt.date # just removes the time aspect from the variable
         DALEC_df_tmp['Wavelength'] = doves_wavelengths
@@ -212,7 +212,7 @@ def join_DALEC_SD_dfs(DALEC_df, SD_df, dropNA=True):
     return superDuperDF
 
 
-def multiDaySpectraPlot(superDuperDF, DALEC_param='DALEC_mean_Rrs', SD_col_slice=slice(1, None, 1),
+def multiDaySpectraPlot(superDuperDF, DALEC_param='Rrs_median', SD_col_slice=slice(1, None, 1),
                         figsize=None, SD_label='SD_Spectra', ylim=None, grid=True, show_plot=True):
     '''
     takes a DF, superDuperDF, with columns 'Date', 'Wavelength', DALEC_param, and SD data which is selected using SD_col_slice
@@ -228,7 +228,7 @@ def multiDaySpectraPlot(superDuperDF, DALEC_param='DALEC_mean_Rrs', SD_col_slice
     n_cols = int(np.ceil(n_dates/n_rows))
     
     if figsize is None:
-        figsize = (n_cols * 7, n_rows*7)
+        figsize = (n_cols * 4, n_rows*4)
 
     fig, ax = plt.subplots(n_rows, n_cols, figsize=figsize)
     ax = ax.flatten()
@@ -263,6 +263,7 @@ def multiDaySpectraPlot(superDuperDF, DALEC_param='DALEC_mean_Rrs', SD_col_slice
         ax[i].legend(newHandles, newLabels)
         if grid:
             ax[i].grid()
+    plt.tight_layout()
     if show_plot:
         plt.show()
     return fig, ax
@@ -422,6 +423,7 @@ def plot_algorithm_from_DF(df, algorithm=NDPCI_from_DF, col_names=None, show_leg
         ax.grid()
     if show_legend:
         plt.legend()
+    plt.tight_layout()
     if plot_show:
         plt.show()
     return ax

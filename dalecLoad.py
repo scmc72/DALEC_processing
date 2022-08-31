@@ -1,5 +1,8 @@
 import pandas as pd
 import numpy as np
+import spectralConv
+from scipy import interpolate
+import os
 
 def load_DALEC_spect_wavelengths(filepath, header=15):
     """
@@ -12,7 +15,8 @@ def load_DALEC_spect_wavelengths(filepath, header=15):
                                )
     return spect_wavelengths # these are just the mappings of wavelength to pixel number
 
-def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIndex=True, removeSaturated=True, parse_dates=True):
+def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIndex=True,
+                   removeSaturated=True, parse_dates=[[' UTC Date', ' UTC Time']]):
     """
     loads DALEC log file (excluding spectral wavelength mappings)
     optionally returns log file in long format
@@ -46,9 +50,9 @@ def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIn
                             )
     
     # any row with invalid UTC date can be removed
-    DALEC_log.drop(DALEC_log[DALEC_log[' UTC Date'].isna()].index, inplace = True)
+    DALEC_log.drop(DALEC_log[DALEC_log[' UTC Date_ UTC Time'].isna()].index, inplace = True)
     # this removes the duplicated headings
-    DALEC_log.drop(DALEC_log[DALEC_log[' UTC Date'] == 'UTC Date'].index, inplace = True)
+    DALEC_log.drop(DALEC_log[DALEC_log[' UTC Date_ UTC Time'] == ' UTC Date_ UTC Time'].index, inplace = True)
     
     if dropNA:
         DALEC_log.dropna(inplace=True, axis=0,)
@@ -71,17 +75,50 @@ def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIn
         # change saturation flag to int.
         DALEC_log[' Saturation Flag'] = DALEC_log[' Saturation Flag'].astype(int)
         # format column as datetimes
-        DALEC_log[' UTC Date'] = pd.to_datetime(DALEC_log[' UTC Date'], dayfirst=True, infer_datetime_format=True)
+        DALEC_log[' UTC Date_ UTC Time'] = pd.to_datetime(DALEC_log[' UTC Date_ UTC Time'], dayfirst=True, infer_datetime_format=True)
         # remove saturated readings - this hasn't been tested on a df which isn't in long format!
         if removeSaturated:
             indSat = DALEC_log[DALEC_log[' Saturation Flag'] == 1].index.get_level_values(0)
             if list(indSat): # checks if the list is empty
                 DALEC_log.drop(indSat, level=0, axis=0, inplace=True)
+    DALEC_log.set_index(['spectral_ind', ' UTC Date_ UTC Time'], drop=True, append=True, inplace=True)
+    
+    # let's sort out these stupid names and remove leading spaces
+    rename_cols_dict = dict([(col, col[1:]) for col in DALEC_log.columns[1:-1]])
+
+    DALEC_log.rename(columns=rename_cols_dict, inplace=True)
+    DALEC_log.index.rename(['Sample #', 'Channel', 'spectral_ind', 'Datetime'], inplace=True)
+    
+    # don't need sample no. as an index I don't think
+    DALEC_log.index = DALEC_log.index.droplevel('Sample #')
 
     return DALEC_log
 
-from scipy import interpolate
-# there are other interpolation methods too, but I think this is probably fine?
+def load_DALEC_dir(DALEC_directory, file_names=None, **kwargs):
+    '''
+    finds all .dtf files in the specified directory dalec_dir and loads them using load_DALEC_log()
+    results are combined into a single dataframe
+    can also specify specific files in a list using file_names 
+    '''
+    if file_names is None: # if None, then load all DALEC transect (.dtf) files in the directory
+        DALEC_files = []
+        for file in os.listdir(DALEC_directory):
+            if file.endswith(".dtf"):
+                DALEC_files.append(os.path.join(DALEC_directory, file))
+    else:
+        DALEC_files = [DALEC_directory + file for file in file_names]
+    
+    print('loading ... ' + str(DALEC_files[0]))
+    DALEC_df = load_DALEC_log(DALEC_files[0], **kwargs)
+    
+    for file in DALEC_files[1:]:
+        print('loading ... ' + str(file))
+        DALEC_df = pd.concat([DALEC_df, load_DALEC_log(file, **kwargs)])
+            
+    # probably smart to sort in case we get some weird stuff happenin' with file order etc.
+    return DALEC_df.sort_values('Datetime')
+    
+    
 
 def uniform_grid_spectra(DALEC_sample, spect_wavelengths, param='Lu', nsteps=200, min_waveL=400, max_waveL=1000):
     """
@@ -99,43 +136,74 @@ def uniform_grid_spectra(DALEC_sample, spect_wavelengths, param='Lu', nsteps=200
     
     return out
 
-# just in case I want to use the old version again!
-
-# def uniform_grid_spectra_mean(DALEC_log, spect_wavelengths, nsteps=601, min_waveL=400, max_waveL=1000):
-#     """
-#     - takes mean spectrum from an entire DALEC log file and converts to a uniform grid
-#     - grid is defined by nsteps, min_waveL and max_waveL
-#     - returns a pandas DF with Lu_mean, Lsky_mean and Ed_mean
-#     """
-#     # this is the bad code way to do it!
-#     Lu_tot = np.zeros((nsteps,))
-#     Lsky_tot = np.zeros((nsteps,))
-#     Ed_tot = np.zeros((nsteps,))
-#     # this is slowwwww - should consider if it's worth taking the mean before regridding?
-#     for sample in DALEC_log.index.get_level_values('Sample #').unique():
-#         sample_i = DALEC_log.loc[sample, :]
-#         Lu_tot += uniform_grid_spectra(sample_i, spect_wavelengths, param='Lu', nsteps=nsteps)[:, 1]
-#         Lsky_tot += uniform_grid_spectra(sample_i, spect_wavelengths, param='Lsky', nsteps=nsteps)[:, 1]
-#         Ed_tot += uniform_grid_spectra(sample_i, spect_wavelengths, param='Ed', nsteps=nsteps)[:, 1]
-
-#     Lu_mean = Lu_tot/nsteps
-#     Lsky_mean = Lsky_tot/nsteps
-#     Ed_mean = Ed_tot/nsteps
+def resampleMultiLog(dalecLog, freq='1D', level='Datetime', method='median'):
+    '''
+    - takes a dalecLog df (eg. logfile from load_DALEC_log())
+    - resamples to the desired frequency (eg. daily '1D', or hourly '1h' etc.)
+    - the aggregation method can be specified as a string, and defaults to median
+    - any pandas aggregation function can be used (eg. 'mean', 'sum', 'std', 'min', 'max', 'describe')
+    - most aggregation will only work on numeric data, and automatically removes non-numeric columns
+    - (currently most cols are non-numeric, as that seems to be the easiest way to load em idk?)
+    '''
+    groupby = (dalecLog.groupby(['Channel', 'spectral_ind']
+                                +[pd.Grouper(freq=freq, level='Datetime')]))
+                           
+    groupedMethod = getattr(groupby, method) # this basically allows you to call any method as a string
+    return groupedMethod()
     
-# #     # better way like this, which takes mean then does spectra regridding stuff
-#       # currently not working! need to work on this some more haha
-# #     DALEC_log.mean(axis=0, level='Sample #', numeric_only=True, inplace=True)
-# #     Lu_mean = dalecLoad.uniform_grid_spectra(DALEC_log, spect_wavelengths, param='Lu', nsteps=nsteps)
-# #     Lsky_mean = dalecLoad.uniform_grid_spectra(DALEC_log, spect_wavelengths, param='Lsky', nsteps=nsteps)
-# #     Ed_mean = dalecLoad.uniform_grid_spectra(DALEC_log, spect_wavelengths, param='Ed', nsteps=nsteps)
+def uniform_grid_spectra_multi(DALEC_log, spect_wavelengths=None, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000,
+                               resample_to_SDs=True, col_end='_median'):
+    '''
+    takes a DALEC logfile (eg. from load_DALEC_log, or aggregated with resampleMultiLog)
+    and performs regridding followed by calculation of Rrs 
+    resample_to_SDs options allows for resampling to the superDoves wavebands
+    NOTE this will regrid for all unique datetimes in the Datetime column and will be VERY SLOW
+    if you have too many dates! hence, good idea to use resampleMultiLog() beforehand
+    use col_end to add a suffix to the column names to indicate how they were previously calc'd
+    eg. '_mean'
+    '''
     
-#     # might be nice to output Rrs too?
-#     wavelengths = uniform_grid_spectra(sample_i, spect_wavelengths, param='Lu', nsteps=nsteps)[:, 0]
-#     df_out = pd.DataFrame(data={'Wavelength': wavelengths,
-#                                'Lu_mean': Lu_mean, 
-#                                'Lsky_mean': Lsky_mean,
-#                                'Ed_mean': Ed_mean})
-#     return df_out
+    if spect_wavelengths is None:
+        spect_wavelengths = load_DALEC_spect_wavelengths('data/Jul-Aug/DALEC_72_73.dtf')
+    
+    df_out = None
+    if resample_to_SDs:
+        RSR_doves_file='non-DALEC-data/RSR-Superdove.csv'
+        RSR_doves = pd.read_csv(RSR_doves_file)
+        doves_wavelengths = [444., 492., 533., 566., 612., 666., 707., 866.]
+
+    for date in DALEC_log.index.get_level_values('Datetime').unique():
+        df = DALEC_log.loc[:, :, [date]]
+        Lu = uniform_grid_spectra(df, spect_wavelengths, param='Lu', nsteps=nsteps)
+        Lsky = uniform_grid_spectra(df, spect_wavelengths, param='Lsky', nsteps=nsteps)
+        Ed = uniform_grid_spectra(df, spect_wavelengths, param='Ed', nsteps=nsteps)
+        Rrs = (Lu[:, 1] - (RHO * Lsky[:, 1])) / Ed[:, 1]
+        
+        if resample_to_SDs:
+            DALEC_SD = spectralConv.SD_band_calc(RSR_doves, Rrs,
+                                                 RSR_doves['Wavelength (nm)'].values)
+
+            df_tmp = pd.DataFrame(data=DALEC_SD, columns=['Rrs'+col_end])
+            df_tmp['Date'] = np.full((8,), date)
+            df_tmp['Wavelength'] = doves_wavelengths
+            df_tmp.set_index(['Date', 'Wavelength'], inplace=True)
+
+        else:
+            df_tmp = pd.DataFrame(index=np.full((nsteps,), date),
+                                  data={'Wavelength': Lu[:, 0],
+                                        'Lu'+col_end: Lu[:, 1], 
+                                        'Lsky'+col_end: Lsky[:, 1],
+                                        'Ed'+col_end: Ed[:, 1],
+                                        'Rrs'+col_end: Rrs})
+            df_tmp.index.rename('Date', inplace=True)
+            df_tmp.set_index('Wavelength', append=True, inplace=True)
+            
+        if df_out is None:
+            df_out = df_tmp.copy()
+        else:
+            df_out = pd.concat([df_out, df_tmp])
+
+    return df_out
 
 
 def uniform_grid_spectra_mean(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000):
@@ -144,11 +212,11 @@ def uniform_grid_spectra_mean(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=60
     - grid is defined by nsteps, min_waveL and max_waveL
     - returns a pandas DF with Lu_mean, Lsky_mean and Ed_mean
     """
+    print('for more flexibility and handling of multiple days its better to use resampleMultiLog() followed by uniform_grid_spectra_multi()')
     # this is a much more optimal way than previously! - 
     df = DALEC_log.copy() # not sure if neccesary but perhaps best to be on the safe side?
     # setting spectral_ind as an index might be useful for other stuff too?
-    df.set_index('spectral_ind', append=True, inplace=True)
-    df = df.groupby(level=[' Channel', 'spectral_ind']).mean(numeric_only=True)
+    df = df.groupby(level=['Channel', 'spectral_ind']).mean(numeric_only=True)
     Lu_mean = uniform_grid_spectra(df, spect_wavelengths, param='Lu', nsteps=nsteps)
     Lsky_mean = uniform_grid_spectra(df, spect_wavelengths, param='Lsky', nsteps=nsteps)
     Ed_mean = uniform_grid_spectra(df, spect_wavelengths, param='Ed', nsteps=nsteps)
@@ -162,30 +230,6 @@ def uniform_grid_spectra_mean(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=60
                                'Rrs_mean': Rrs_mean})
     return df_out
 
-# def uniform_grid_spectra_stats(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000):
-#     """
-#     - finds summary stats from an entire DALEC log file and converts to a uniform grid
-#     - grid is defined by nsteps, min_waveL and max_waveL
-#     - returns a pandas DF with Lu_mean, Lsky_mean and Ed_mean
-#     """
-#     # this is a much more optimal way than previously! - 
-#     df = DALEC_log.copy() # not sure if neccesary but perhaps best to be on the safe side?
-#     # setting spectral_ind as an index might be useful for other stuff too?
-#     df.set_index('spectral_ind', append=True, inplace=True)
-#     df = df.groupby(level=[' Channel', 'spectral_ind']).median(numeric_only=True)
-#     Lu_mean = uniform_grid_spectra(df, spect_wavelengths, param='Lu', nsteps=nsteps)
-#     Lsky_mean = uniform_grid_spectra(df, spect_wavelengths, param='Lsky', nsteps=nsteps)
-#     Ed_mean = uniform_grid_spectra(df, spect_wavelengths, param='Ed', nsteps=nsteps)
-    
-#     Rrs_mean = (Lu_mean[:, 1] - (RHO * Lsky_mean[:, 1])) / Ed_mean[:, 1]
-    
-#     df_out = pd.DataFrame(data={'Wavelength': Lu_mean[:, 0],
-#                                'Lu_mean': Lu_mean[:, 1], 
-#                                'Lsky_mean': Lsky_mean[:, 1],
-#                                'Ed_mean': Ed_mean[:, 1],
-#                                'Rrs_mean': Rrs_mean})
-#     return df_out
-
 def uniform_grid_spectra_stats(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000, 
                                percentiles=[.25, .5, .75],
                                fastGridding=True):
@@ -197,7 +241,7 @@ def uniform_grid_spectra_stats(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=6
     df = DALEC_log.copy() # not sure if neccesary but perhaps best to be on the safe side?
     
     # drop saturation flag to prevent this being included in the summary
-    df.drop(labels=' Saturation Flag', axis=1, inplace=True)
+    df.drop(labels='Saturation Flag', axis=1, inplace=True)
     df.set_index('spectral_ind', append=True, inplace=True)
     
     if fastGridding:
@@ -219,7 +263,7 @@ def uniform_grid_spectra_stats(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=6
         interp = interpolate.interp1d(x, y, axis=0)
         Rrs_summary = np.column_stack((wavelength_grid,
                                    interp(wavelength_grid)))
-        colnames = ['wavelength'] + list(df_Rrs.columns) # get column names
+        colnames = ['Wavelength'] + list(df_Rrs.columns) # get column names
         df_out = pd.DataFrame(data=Rrs_summary, columns=colnames)
 
     else:
@@ -288,6 +332,9 @@ def multiLogLoad(filepath,
     """
     # ideally specify dtype of all rows for efficiency and to prevent bad things - TODO!
     # need to specify str for lots of columns as these have some rows which contain stuff we need to remove
+    
+    print('probably dont need to use this function anymore as load_DALEC_log() should support loading of these file types now!')
+    
     df = pd.read_csv(filepath,
                      header=header,
                      parse_dates=True,
