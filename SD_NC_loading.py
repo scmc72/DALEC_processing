@@ -87,7 +87,7 @@ def get_SD_NC_Spectra_grid(NC_file, lat_pt, lon_pt, shape=(3, 3)):
             rhos = []
     return df1
 
-def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1), div_by_pi=True, skipSameDay=True):
+def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1), div_by_pi=True, skipSameDay=True, dateOnly=False):
     '''
     Loads all L2R netcdfs in a given directory. Then extracts a grid of shape=pixel_grid_shape at the given coord
     Returns a pandas DF with Date, Wavelength, and rho_s columns
@@ -107,7 +107,7 @@ def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1), div_by_pi=Tr
 
     for i in range(len(SD_files)):
         f = netCDF4.Dataset(SD_files[i])
-        SD_spect = get_SD_NC_Spectra_grid(f, coord[0], coord[1], shape=(3, 3))
+        SD_spect = get_SD_NC_Spectra_grid(f, coord[0], coord[1], shape=pixel_grid_shape)
         ncdf_dates.append(f.isodate)
         indexes.append(i)
         SD_spect_list.append(SD_spect)
@@ -118,17 +118,18 @@ def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1), div_by_pi=Tr
     
     SD_df = None # this is almost definitely uneccesary
     
-    # perhaps have removing images from same date as an option??
     for i in range(len(SD_spect_list_sorted)):
         SD_spect = SD_spect_list_sorted[i]
         date = sorted_dates[i]
+        print('date skipping doesnae work if we only have 1 file!!!')
         if (date[:10] == sorted_dates[i-1][:10]) and skipSameDay:
             print('...skipping duplicate date entry on ' + str(date[:10]) + 
                   ' (set skipSameDay=False to disable this)')
         else:
             SD_df_tmp = SD_spect.copy()
-            SD_df_tmp['Date'] = pd.to_datetime(date)
-            SD_df_tmp['Date'] = SD_df_tmp['Date'].dt.date # just removes the time aspect from the variable
+            SD_df_tmp['Date'] = pd.to_datetime(date, utc=False)
+            if dateOnly:
+                SD_df_tmp['Date'] = SD_df_tmp['Date'].dt.date # just removes the time aspect from the variable
             SD_df_tmp.set_index(['Date', 'Wavelength'], inplace=True)
             if SD_df is None:
                 SD_df = SD_df_tmp.copy()
@@ -384,13 +385,61 @@ def NDPCI(Rrs_707, Rrs_612, alpha=46.478, beta=5.1864):
     diff_ratio = (Rrs_707 - Rrs_612)/(Rrs_707 + Rrs_612)
     PC = alpha * np.exp(np.array(beta * diff_ratio, dtype=float)) # just force this to be a float array to make np.exp() happy
     return PC
+    
+def NDChlaI(Rrs_707, Rrs_666, Rrs_566, Rrs_444,
+            alpha1=19.34, alpha2=19.34, beta1=5.2044, beta2=6.1257, C=0.662955):
+    '''
+    using gomez et al 2011 normalized difference chl-a index (NDClaI) algorithm
+    see: https://link.springer.com/article/10.1007/s10661-010-1831-7
+    where chl-a [mg/m^3] = alpha1 * e ^ (beta1 * ND1) for high chl-a
+    and chl-a [mg/m^3] = alpha2 * e ^ (beta2 * (ND2 - C)) for low chl-a
+    
+    how to determine high vs low chl-a?
+    
+    calc. two ND indexes: 
+    ND1: (Rrs_709 - Rrs_666)/(Rrs_709 + Rrs_666) # high chla
+    ND2: (Rrs_566 - Rrs_444)/(Rrs_566 + Rrs_444) # low chla
+    
+    if ND1>0 then use this to calc chla (high chla)
+    otherwise if ND2>0 then use this to calc chla (low chla)
+   
+    currently default params are those found in gomez et al 2011
+    '''
+  
+    ND1 = (Rrs_707 - Rrs_666)/(Rrs_707 + Rrs_666)
+    ND2 = (Rrs_566 - Rrs_444)/(Rrs_566 + Rrs_444)
+    # could be more efficient, but I think it's probably fine
+    chl_a_1 = alpha1 * np.exp(np.array(beta1 * ND1, dtype=float))
+    chl_a_2 = alpha2 * np.exp(np.array(beta2 * (ND2 - C), dtype=float))
+    
+    highChl = np.greater(ND1, 0.0) # truth array for high chl
+    lowChl = np.less(ND2, 0.0) # truth array for low chl
+    print('all high chla?: ' + str(highChl.all()))
+    print('any low chla?: ' + str((~highChl * lowChl).any()))
+    print('any unknown?: ' + str( (~(~highChl * lowChl)) * (~highChl) ) )
+
+    chl_a = (chl_a_1 * highChl) + (~highChl * lowChl * chl_a_2)
+    # slightly confusing way to do this, but I'm pretty sure it should work
+    # basically: if high chla, then return chl_a_1, if not high chla AND low chla, then chl_a_2
+    # otherwise, 0.
+    
+    return chl_a
+    
+def NDChlaI_from_DF(df, col_name='DALEC_mean_Rrs', **kwargs):
+    Rrs_707 = df.loc[(df.index.get_level_values(0).unique(),707.0), :][col_name].values
+    Rrs_666 = df.loc[(df.index.get_level_values(0).unique(),666.0), :][col_name].values
+    Rrs_566 = df.loc[(df.index.get_level_values(0).unique(),566.0), :][col_name].values
+    Rrs_444 = df.loc[(df.index.get_level_values(0).unique(),444.0), :][col_name].values
+    return NDChlaI(Rrs_707, Rrs_666, Rrs_566, Rrs_444, **kwargs)
+
 
 def NDPCI_from_DF(df, col_name='DALEC_mean_Rrs', alpha=46.478, beta=5.1864):
     '''
     convenience function to extract Rrs_707 and Rrs_612 from a superduperdf kinda df and use this to call NDPCI()
     '''
-    Rrs_612 = df.loc[(df.index.get_level_values(0)[:],612.0), :][col_name].values
-    Rrs_707 = df.loc[(df.index.get_level_values(0)[:],707.0), :][col_name].values
+    
+    Rrs_612 = df.loc[(df.index.get_level_values(0).unique(),612.0), :][col_name].values
+    Rrs_707 = df.loc[(df.index.get_level_values(0).unique(),707.0), :][col_name].values
     return NDPCI(Rrs_707, Rrs_612, alpha=alpha, beta=beta)
 
 def plot_algorithm_from_DF(df, algorithm=NDPCI_from_DF, col_names=None, show_legend=False,
@@ -406,7 +455,6 @@ def plot_algorithm_from_DF(df, algorithm=NDPCI_from_DF, col_names=None, show_leg
     results = [algorithm(df, col_name=col, **kwargs) for col in col_names]
     
     x = df.index.get_level_values(0).unique() # x is the list of dates
-    
     for result, col_name in zip(results, col_names):
         plt.plot(x, result, label=col_name, marker='o', alpha=0.8)
         

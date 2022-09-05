@@ -24,7 +24,7 @@ df_daily_gridded = dl.uniform_grid_spectra_multi(result, resample_to_SDs=False)
 print('daily median vals gridded:')
 print(df_daily_gridded)
 
-# sdl.multiDaySpectraPlot(df_daily_gridded,
+#sdl.multiDaySpectraPlot(df_daily_gridded,
                         # SD_col_slice=slice(0, 0), # slice returns empty as we don't have any SD data yet
                         # ylim=[0, df_daily_gridded['Rrs_median'].max(axis=0)*1.1],
                         # figsize=(12, 12))
