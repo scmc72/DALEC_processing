@@ -22,7 +22,7 @@
 
 time_start<-Sys.time()
 #
-Rrs_file<-"C:/Users/daa5/Project/DALEC_processing/R-code/data/readytoProc.csv"
+Rrs_file<-"~/Documents/StirlingUni/Project/DALEC_processing/R-code/data/2022.csv"
 Rrs_dt<-read.csv(Rrs_file,header=TRUE)
 #
 WAVE_MIN <- 400
@@ -110,7 +110,7 @@ print(Sys.time()-time_start)
 #-------------plot one example-----------
 m<-19
 xx<-seq(WAVE_MIN,WAVE_MAX)
-plot(xx,as.numeric(Ref_dt[m,]),type="l",ylim=c(-0.005,0.02))                                 #,xlim=c(700,850)
+plot(xx,as.numeric(Ref_dt[m,]),type="l",ylim=c(-0.005,0.03))                                 #,xlim=c(700,850)
 lines(xx,as.numeric(tmp_result[m,paste("Rrs",xx,sep="")]),col="red")
 lines(xx,rep(0,length(xx)),col="green")
 
