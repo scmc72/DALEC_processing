@@ -47,7 +47,7 @@ def get_SD_NC_Spectra(NC_file, lat_pt, lon_pt):
     return df
 
 
-def get_SD_NC_Spectra_grid(NC_file, lat_pt, lon_pt, shape=(3, 3)):
+def get_SD_NC_Spectra_grid(NC_file, lat_pt, lon_pt, shape=(3, 3), variable='rhos'):
     '''
     function to extract surface reflectance spectra from a superdoves NetCDF file at a given lat_pt, lon_pt coordinate
     gets values from several pixels in a grid (with shape = shape) around the chosen coord
@@ -59,8 +59,8 @@ def get_SD_NC_Spectra_grid(NC_file, lat_pt, lon_pt, shape=(3, 3)):
     wavelengths = []    
     for var in list(NC_file.variables.keys()):
         # only interested in surface reflectance:
-        if 'rhos' in var:
-            wavelengths.append(float(var[5:]))
+        if variable in var:
+            wavelengths.append(float(var[len(variable)+1:]))
             
     df1 = pd.DataFrame(data={'Wavelength':wavelengths})
                        
@@ -78,7 +78,7 @@ def get_SD_NC_Spectra_grid(NC_file, lat_pt, lon_pt, shape=(3, 3)):
         for j in y:
             for var in list(NC_file.variables.keys()):
                 # only interested in surface reflectance:
-                if 'rhos' in var:
+                if variable in var:
                     rhos.append(NC_file.variables[var][j, i])
             # might want to think about if I want to include the lat and lon of each pixel too?
             var_name = 'rho_s_' + str(i) + '_' + str(j)
@@ -87,7 +87,9 @@ def get_SD_NC_Spectra_grid(NC_file, lat_pt, lon_pt, shape=(3, 3)):
             rhos = []
     return df1
 
-def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1), div_by_pi=True, skipSameDay=True, dateOnly=False):
+def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1),
+                      div_by_pi=True, skipSameDay=True,
+                      dateOnly=False, filetype="L2R.nc", variable='rhos'):
     '''
     Loads all L2R netcdfs in a given directory. Then extracts a grid of shape=pixel_grid_shape at the given coord
     Returns a pandas DF with Date, Wavelength, and rho_s columns
@@ -98,7 +100,7 @@ def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1), div_by_pi=Tr
     # could use list comprehensions in a few places here if things start getting slow!
     SD_files = []
     for file in os.listdir(SD_directory):
-        if file.endswith("L2R.nc"):
+        if file.endswith(filetype):
             SD_files.append(os.path.join(SD_directory, file))
 
     ncdf_dates = []
@@ -107,7 +109,8 @@ def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1), div_by_pi=Tr
 
     for i in range(len(SD_files)):
         f = netCDF4.Dataset(SD_files[i])
-        SD_spect = get_SD_NC_Spectra_grid(f, coord[0], coord[1], shape=pixel_grid_shape)
+        SD_spect = get_SD_NC_Spectra_grid(f, coord[0], coord[1], shape=pixel_grid_shape,
+                                          variable=variable)
         ncdf_dates.append(f.isodate)
         indexes.append(i)
         SD_spect_list.append(SD_spect)

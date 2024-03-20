@@ -1,0 +1,1467 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Dimap_Document name="PlanetScope_24c9_2023_06_02_10_28_55_L2R.dim">
+    <Metadata_Id>
+        <METADATA_FORMAT version="2.13.0">DIMAP</METADATA_FORMAT>
+        <METADATA_PROFILE>BEAM-DATAMODEL-V1</METADATA_PROFILE>
+    </Metadata_Id>
+    <Dataset_Id>
+        <DATASET_SERIES>BEAM-PRODUCT</DATASET_SERIES>
+        <DATASET_NAME>PlanetScope_24c9_2023_06_02_10_28_55_L2R</DATASET_NAME>
+    </Dataset_Id>
+    <Dataset_Use>
+        <DATASET_COMMENTS>NetCDF/CF Data Product</DATASET_COMMENTS>
+        <DATASET_AUTO_GROUPING>rhot:rhorc:rhos:rhow:Rrs:Lt</DATASET_AUTO_GROUPING>
+    </Dataset_Use>
+    <Production>
+        <DATASET_PRODUCER_NAME />
+        <PRODUCT_TYPE>NetCDF</PRODUCT_TYPE>
+    </Production>
+    <Geoposition>
+        <ComponentGeoCoding>
+            <___persistence_id___>ComponentGC:1</___persistence_id___>
+            <ForwardCodingKey>FWD_PIXEL</ForwardCodingKey>
+            <InverseCodingKey>INV_PIXEL_QUAD_TREE</InverseCodingKey>
+            <GeoChecks>ANTIMERIDIAN</GeoChecks>
+            <GeoCRS>GEOGCS["WGS84(DD)", 
+          DATUM["WGS84", 
+            SPHEROID["WGS84", 6378137.0, 298.257223563]], 
+          PRIMEM["Greenwich", 0.0], 
+          UNIT["degree", 0.017453292519943295], 
+          AXIS["Geodetic longitude", EAST], 
+          AXIS["Geodetic latitude", NORTH]]</GeoCRS>
+            <LonVariableName>lon</LonVariableName>
+            <LatVariableName>lat</LatVariableName>
+            <RasterResolutionKm>0.0029915557958390387</RasterResolutionKm>
+            <OffsetX>0.5</OffsetX>
+            <OffsetY>0.5</OffsetY>
+            <SubsamplingX>1.0</SubsamplingX>
+            <SubsamplingY>1.0</SubsamplingY>
+        </ComponentGeoCoding>
+    </Geoposition>
+    <Raster_Dimensions>
+        <NCOLS>298</NCOLS>
+        <NROWS>204</NROWS>
+        <NBANDS>20</NBANDS>
+    </Raster_Dimensions>
+    <Data_Access>
+        <DATA_FILE_FORMAT>ENVI</DATA_FILE_FORMAT>
+        <DATA_FILE_FORMAT_DESC>ENVI File Format</DATA_FILE_FORMAT_DESC>
+        <DATA_FILE_ORGANISATION>BAND_SEPARATE</DATA_FILE_ORGANISATION>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/lon.hdr" />
+            <BAND_INDEX>0</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/lat.hdr" />
+            <BAND_INDEX>1</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhot_444.hdr" />
+            <BAND_INDEX>2</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhos_444.hdr" />
+            <BAND_INDEX>3</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhot_492.hdr" />
+            <BAND_INDEX>4</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhos_492.hdr" />
+            <BAND_INDEX>5</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhot_533.hdr" />
+            <BAND_INDEX>6</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhos_533.hdr" />
+            <BAND_INDEX>7</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhot_566.hdr" />
+            <BAND_INDEX>8</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhos_566.hdr" />
+            <BAND_INDEX>9</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhot_612.hdr" />
+            <BAND_INDEX>10</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhos_612.hdr" />
+            <BAND_INDEX>11</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhot_666.hdr" />
+            <BAND_INDEX>12</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhos_666.hdr" />
+            <BAND_INDEX>13</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhot_707.hdr" />
+            <BAND_INDEX>14</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhos_707.hdr" />
+            <BAND_INDEX>15</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhot_866.hdr" />
+            <BAND_INDEX>16</BAND_INDEX>
+        </Data_File>
+        <Data_File>
+            <DATA_FILE_PATH href="PlanetScope_24c9_2023_06_02_10_28_55_L2R.data/rhos_866.hdr" />
+            <BAND_INDEX>17</BAND_INDEX>
+        </Data_File>
+    </Data_Access>
+    <Image_Display>
+        <Band_Statistics>
+            <BAND_INDEX>5</BAND_INDEX>
+            <STX_MIN>0.004817945417016745</STX_MIN>
+            <STX_MAX>0.34924107789993286</STX_MAX>
+            <STX_MEAN>0.03622021014164093</STX_MEAN>
+            <STX_STD_DEV>0.03020861067195093</STX_STD_DEV>
+            <STX_RES_LEVEL>0</STX_RES_LEVEL>
+            <HISTOGRAM>1,0,3,2,6,13,33,69,123,186,303,414,592,816,944,1056,1062,1216,1365,1473,1674,1660,1861,1867,2061,2081,2038,2207,1807,1702,1528,1190,1074,900,857,814,771,725,695,682,641,590,558,586,439,496,432,421,419,350,383,351,356,335,313,338,328,312,305,335,331,342,285,306,300,334,313,283,274,288,288,246,279,269,250,241,254,263,227,246,188,195,203,162,176,176,175,136,151,128,147,118,122,122,102,102,113,100,112,100,95,97,94,82,86,71,88,77,79,74,82,82,68,64,58,66,64,69,73,48,61,59,62,50,47,57,43,36,43,54,35,35,29,25,21,22,36,30,30,27,30,11,25,21,21,23,25,26,21,15,23,26,28,19,34,11,31,23,29,23,27,23,21,19,21,16,16,9,15,29,13,16,15,16,26,11,20,23,14,14,12,19,10,11,21,12,10,28,15,10,17,11,9,17,14,16,18,15,22,18,10,12,11,19,14,11,12,16,15,12,12,20,8,12,23,17,13,16,16,10,12,18,13,16,8,13,9,15,17,11,6,12,12,12,15,4,6,13,9,8,13,6,6,9,4,7,5,5,8,5,5,4,5,5,2,5,8,6,6,5,2,7,6,7,2,5,8,8,4,2,4,9,2,3,5,7,6,7,8,4,4,5,5,7,4,7,6,6,5,7,5,8,3,6,4,7,6,6,6,2,4,8,1,5,3,5,5,5,3,3,5,4,0,6,5,7,8,1,2,2,3,3,0,2,5,1,4,6,2,9,2,6,3,4,2,3,2,5,6,2,3,2,4,4,6,6,5,4,4,6,9,4,6,4,4,7,5,8,0,6,4,2,5,2,2,3,4,0,3,2,1,1,1,1,1,0,1,0,1,0,0,1,0,1,0,1,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,1,1,0,1,0,0,2,0,0,1,1,0,0,0,1,0,0,0,0,0,1,1,0,0,2,0,0,0,1,0,0,0,0,1,0,0,2,2,0,0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,1,1,0,0,0,0,2,1,0,1,1,0,0,1,0,0,2,0,0,0,0,0,2,1,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1</HISTOGRAM>
+            <NUM_COLORS>256</NUM_COLORS>
+            <Color_Palette_Point>
+                <SAMPLE>0.0115449597233237</SAMPLE>
+                <COLOR red="0" green="0" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>0.054597851283688215</SAMPLE>
+                <COLOR red="128" green="128" blue="128" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>0.09765074284405273</SAMPLE>
+                <COLOR red="255" green="255" blue="255" alpha="255" />
+            </Color_Palette_Point>
+            <NO_DATA_COLOR red="0" green="0" blue="0" alpha="0" />
+            <HISTOGRAM_MATCHING>None</HISTOGRAM_MATCHING>
+        </Band_Statistics>
+        <Band_Statistics>
+            <BAND_INDEX>7</BAND_INDEX>
+            <STX_MIN>0.010462873615324497</STX_MIN>
+            <STX_MAX>0.38563525676727295</STX_MAX>
+            <STX_MEAN>0.05368499192684944</STX_MEAN>
+            <STX_STD_DEV>0.030024541246127863</STX_STD_DEV>
+            <STX_RES_LEVEL>0</STX_RES_LEVEL>
+            <HISTOGRAM>2,3,8,24,62,104,167,293,327,300,285,292,253,211,198,186,230,213,233,256,238,258,329,336,418,431,535,603,650,793,852,958,1114,1161,1132,1100,1077,1034,936,1007,986,1006,976,965,1013,1091,1009,1102,995,1066,1020,1017,1083,1032,1049,920,875,842,789,704,718,644,667,606,655,612,585,635,647,573,549,580,536,517,535,475,434,395,418,374,403,378,339,361,341,347,306,289,272,254,213,240,226,215,208,186,170,162,131,124,125,120,97,92,120,106,115,95,89,94,80,64,72,66,72,63,91,65,70,59,54,61,43,46,53,26,43,41,36,28,46,28,39,24,39,34,32,28,27,31,40,27,22,35,33,24,29,25,17,31,27,25,26,21,21,17,24,17,21,14,25,23,19,25,16,24,24,20,18,12,20,26,18,12,22,25,15,17,8,13,23,16,16,19,17,11,13,12,14,18,14,17,17,17,12,8,19,16,17,21,19,12,17,30,16,24,19,15,13,15,12,13,8,6,9,14,5,10,8,9,13,12,4,7,7,12,8,11,6,9,6,11,7,8,9,7,5,9,6,7,5,10,4,6,6,9,10,9,11,5,8,3,7,6,5,6,4,8,5,7,5,7,8,7,4,5,4,5,6,9,6,4,4,5,5,4,5,6,5,3,1,1,6,8,4,5,3,6,5,5,6,4,4,5,6,5,4,4,3,3,4,4,5,5,2,2,3,2,0,6,4,7,4,3,5,2,3,3,8,4,3,3,6,0,3,4,2,7,5,4,4,3,3,8,2,4,10,5,5,5,5,4,6,7,5,4,4,9,3,4,2,5,1,3,4,1,0,2,1,1,0,0,0,0,0,1,0,1,0,1,1,1,0,0,0,0,1,1,0,0,2,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,3,0,0,0,0,1,2,1,1,0,0,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,1,1,0,0,0,1,0,0,1,0,0,1,0,0,4,1,0,0,0,0,0,0,1,1,0,0,0,1,1,0,0,0,0,0,0,1,1,0,1,0,0,0,0,0,1,0,0,2,0,0,0,0,1,1,0,0,0,2,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1</HISTOGRAM>
+            <NUM_COLORS>256</NUM_COLORS>
+            <Color_Palette_Point>
+                <SAMPLE>0.015592183541230042</SAMPLE>
+                <COLOR red="0" green="0" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>0.06285511071564542</SAMPLE>
+                <COLOR red="128" green="128" blue="128" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>0.1101180378900608</SAMPLE>
+                <COLOR red="255" green="255" blue="255" alpha="255" />
+            </Color_Palette_Point>
+            <NO_DATA_COLOR red="0" green="0" blue="0" alpha="0" />
+            <HISTOGRAM_MATCHING>None</HISTOGRAM_MATCHING>
+        </Band_Statistics>
+        <Band_Statistics>
+            <BAND_INDEX>15</BAND_INDEX>
+            <STX_MIN>0.015067814849317074</STX_MIN>
+            <STX_MAX>0.5107808113098145</STX_MAX>
+            <STX_MEAN>0.10920084735394872</STX_MEAN>
+            <STX_STD_DEV>0.042094720221851414</STX_STD_DEV>
+            <STX_RES_LEVEL>0</STX_RES_LEVEL>
+            <HISTOGRAM>2,2,9,4,16,19,38,47,99,118,147,165,195,164,165,172,200,217,211,259,295,338,423,325,340,348,293,281,277,220,193,175,165,128,119,122,97,123,107,94,111,107,114,121,127,135,124,169,123,128,175,173,190,179,205,201,230,214,254,210,244,262,294,315,293,307,350,324,364,323,392,413,452,444,463,472,446,481,485,517,508,514,544,583,570,603,572,569,611,583,607,693,649,683,719,652,696,755,726,705,779,737,728,764,765,780,795,795,802,757,762,780,705,754,672,690,677,653,657,626,629,579,533,504,484,430,411,421,393,375,332,280,309,292,269,243,260,230,228,217,218,209,211,203,233,197,224,227,218,210,191,195,189,187,194,181,181,170,157,124,135,127,124,107,108,100,88,88,83,73,69,68,67,47,48,59,39,48,48,41,30,36,33,29,24,27,35,35,36,23,23,18,20,16,18,19,13,14,13,14,7,14,18,14,18,13,7,12,8,14,6,7,6,5,7,6,10,9,15,16,10,14,18,8,11,11,15,9,12,9,8,12,10,19,10,17,6,15,23,9,14,11,8,10,16,13,13,9,10,9,12,3,9,5,6,8,5,6,3,6,6,8,3,6,6,6,3,3,7,7,5,3,4,5,8,4,4,4,8,5,7,6,2,3,3,3,8,6,5,4,2,9,6,6,6,6,6,9,3,7,2,4,6,6,8,5,6,6,6,3,6,3,3,2,2,3,3,1,0,0,2,0,0,0,0,1,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,2,0,1,0,0,0,0,1,0,0,0,3,1,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,1,1,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1,2,2,2,0,1,0,1,1,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,1,0,0,0,1,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,1,1,1,1,0,0,1,0,0,0,0,0,1,1,1,1,1,0,0,0,1,0,0,3,1,0,0,0,0,0,2,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,1,1</HISTOGRAM>
+            <NUM_COLORS>256</NUM_COLORS>
+            <Color_Palette_Point>
+                <SAMPLE>0.025717898757648072</SAMPLE>
+                <COLOR red="0" green="0" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>0.10075258083907102</SAMPLE>
+                <COLOR red="128" green="128" blue="128" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>0.17578726292049396</SAMPLE>
+                <COLOR red="255" green="255" blue="255" alpha="255" />
+            </Color_Palette_Point>
+            <NO_DATA_COLOR red="0" green="0" blue="0" alpha="0" />
+            <HISTOGRAM_MATCHING>None</HISTOGRAM_MATCHING>
+        </Band_Statistics>
+        <Band_Statistics>
+            <BAND_INDEX>18</BAND_INDEX>
+            <STX_MIN>-0.6121984720230103</STX_MIN>
+            <STX_MAX>0.2255455106496811</STX_MAX>
+            <STX_MEAN>-0.2545212381431661</STX_MEAN>
+            <STX_STD_DEV>0.11477799768617312</STX_STD_DEV>
+            <STX_RES_LEVEL>0</STX_RES_LEVEL>
+            <HISTOGRAM>1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,1,1,2,1,0,0,0,0,2,0,0,1,2,1,0,1,2,2,3,4,1,3,1,4,6,3,4,1,2,6,1,2,5,2,4,4,7,12,14,5,6,6,8,12,9,10,10,12,11,9,19,20,13,21,29,16,32,22,33,28,32,32,44,36,42,54,49,52,61,54,63,77,76,84,68,93,79,79,91,116,111,116,104,101,127,115,165,166,157,159,139,183,186,180,176,185,186,194,203,228,239,218,229,238,245,250,272,244,233,274,251,267,246,253,327,298,299,299,313,333,308,286,329,306,290,309,333,334,315,336,296,332,334,325,304,328,304,321,347,343,341,382,343,328,425,337,364,365,359,361,350,343,373,330,389,386,365,334,345,364,335,337,344,315,361,338,328,345,312,320,361,365,327,338,328,336,334,303,314,280,328,304,321,300,332,293,273,295,300,307,257,303,264,269,286,252,273,246,273,250,242,245,235,263,230,238,245,239,222,244,212,224,238,219,239,199,213,192,201,205,173,193,187,203,190,182,187,178,224,195,190,175,178,180,172,190,180,179,167,164,176,174,187,161,142,171,167,151,156,176,160,157,180,161,152,167,162,145,168,209,152,161,153,167,178,180,170,172,187,151,164,146,170,184,184,135,168,183,184,189,183,178,160,191,181,181,173,175,189,169,167,171,172,180,183,170,155,193,148,158,180,161,162,180,173,165,169,159,168,162,160,132,162,139,144,129,131,106,113,105,78,72,66,82,72,53,58,47,61,48,43,40,30,41,32,29,29,30,20,34,21,21,21,19,19,13,12,14,15,22,12,8,17,8,7,14,19,21,9,10,19,9,13,11,10,10,11,14,13,8,11,7,6,11,6,9,4,9,9,5,9,10,4,11,3,5,6,6,7,4,10,6,4,8,2,5,4,2,5,2,3,4,4,4,5,1,2,5,9,4,2,1,1,6,1,1,4,2,2,2,5,1,2,2,3,2,0,3,1,1,3,0,0,0,0,3,1,0,1,0,1,0,0,0,1,1,1,2,1,1,0,1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,2,0,0,0,0,1,0,0,0,0,0,0,0,0,1</HISTOGRAM>
+            <NUM_COLORS>256</NUM_COLORS>
+            <Color_Palette_Point>
+                <SAMPLE>-0.15949231258127838</SAMPLE>
+                <COLOR red="0" green="0" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>-0.08769038750324398</SAMPLE>
+                <COLOR red="128" green="128" blue="128" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>-0.015888462425209582</SAMPLE>
+                <COLOR red="255" green="255" blue="255" alpha="255" />
+            </Color_Palette_Point>
+            <NO_DATA_COLOR red="0" green="0" blue="0" alpha="0" />
+            <HISTOGRAM_MATCHING>None</HISTOGRAM_MATCHING>
+        </Band_Statistics>
+        <Band_Statistics>
+            <BAND_INDEX>19</BAND_INDEX>
+            <STX_MIN>0.6460221409797668</STX_MIN>
+            <STX_MAX>192.3236541748047</STX_MAX>
+            <STX_MEAN>11.781135306398005</STX_MEAN>
+            <STX_STD_DEV>9.38918984433051</STX_STD_DEV>
+            <STX_RES_LEVEL>0</STX_RES_LEVEL>
+            <HISTOGRAM>56,222,382,994,2618,2549,2220,1891,1583,1421,1318,1282,1235,1160,1196,1191,1169,1136,1152,1102,1122,1147,1064,1058,1048,1051,949,939,900,920,871,892,820,799,785,768,725,720,668,613,570,570,552,542,530,534,484,464,480,422,463,435,407,396,410,322,326,314,311,292,310,284,275,267,249,238,245,217,217,180,196,167,179,156,176,165,123,144,140,151,135,117,100,100,83,78,90,97,77,92,73,59,61,65,61,58,43,63,54,49,54,43,43,34,36,41,33,31,27,43,27,26,21,21,20,26,22,19,18,17,13,16,15,20,13,18,13,9,9,9,19,13,8,8,7,12,8,4,9,7,5,3,4,8,7,4,5,5,7,2,1,6,3,2,8,4,4,2,3,3,0,2,4,2,2,6,5,4,6,6,1,4,2,1,2,1,3,0,2,1,0,0,3,2,0,0,2,0,0,1,0,2,4,1,1,0,0,0,0,1,2,2,0,3,0,0,2,0,3,1,3,1,0,0,0,1,1,0,1,2,0,0,0,3,0,1,0,0,2,0,2,0,0,1,0,0,1,1,0,0,1,0,0,0,0,0,1,0,0,0,2,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1</HISTOGRAM>
+            <NUM_COLORS>256</NUM_COLORS>
+            <Color_Palette_Point>
+                <SAMPLE>2.143503641244024</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="0" blue="130" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>2.2921813815387537</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="0" blue="144" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>2.451178285594133</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="0" blue="161" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>2.621203992039585</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="0" blue="182" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>2.8030235125140592</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="3" blue="202" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>2.9974549236029087</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="8" blue="220" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>3.205373047681938</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="20" blue="235" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>3.4277133890827813</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="39" blue="246" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>3.665476343289955</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="62" blue="251" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>3.9197316981083845</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="1" green="85" blue="254" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>4.191623447053921</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="2" green="109" blue="255" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>4.482374936624138</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="4" green="134" blue="255" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>4.793294370608999</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="6" green="160" blue="255" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>5.125780696207409</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="10" green="185" blue="254" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>5.481329898433586</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="15" green="205" blue="252" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>5.861541731134221</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="25" green="220" blue="248" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>6.268126914901886</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="45" green="231" blue="242" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>6.702914834270883</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="70" green="239" blue="234" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>7.167861768828265</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="100" green="244" blue="224" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>7.665059695274881</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="135" green="246" blue="210" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>8.196745700040454</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="165" green="246" blue="192" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>8.765312044803617</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="190" green="246" blue="170" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>9.373316930205633</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="210" green="246" blue="145" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>10.023496006187873</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="227" green="246" blue="115" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>10.718774680742618</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="231" green="246" blue="80" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>11.462281282458925</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="220" green="248" blue="50" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>12.25736113608702</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="205" green="253" blue="30" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>13.107591614452687</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="185" green="255" blue="18" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>14.016798234445897</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="160" green="255" blue="10" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>14.989071869506011</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="134" green="255" blue="6" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>16.028787156048985</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="109" green="255" blue="4" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>17.140622176654382</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="85" green="254" blue="2" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>18.32957950857437</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="62" green="251" blue="1" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>19.601008732270355</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="39" green="246" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>20.960630501251536</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="20" green="235" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>22.414562281515153</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="8" green="220" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>23.9693458764002</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="3" green="209" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>25.63197686069945</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="196" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>27.409936056465405</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="183" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>29.31122319213189</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="172" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <Color_Palette_Point>
+                <SAMPLE>31.34439289639704</SAMPLE>
+                <LABEL>universal_bluegreen.cpd</LABEL>
+                <COLOR red="0" green="160" blue="0" alpha="255" />
+            </Color_Palette_Point>
+            <NO_DATA_COLOR red="0" green="0" blue="0" alpha="0" />
+            <HISTOGRAM_MATCHING>None</HISTOGRAM_MATCHING>
+        </Band_Statistics>
+    </Image_Display>
+    <Image_Interpretation>
+        <Spectral_Band_Info>
+            <BAND_INDEX>0</BAND_INDEX>
+            <BAND_DESCRIPTION>longitude</BAND_DESCRIPTION>
+            <BAND_NAME>lon</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>degree_east</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <BAND_WAVELEN>0.0</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>1</BAND_INDEX>
+            <BAND_DESCRIPTION>latitude</BAND_DESCRIPTION>
+            <BAND_NAME>lat</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>degree_north</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <BAND_WAVELEN>0.0</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>2</BAND_INDEX>
+            <BAND_DESCRIPTION>Top-of-atmosphere reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhot_444</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>0</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>443.6614</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>3</BAND_INDEX>
+            <BAND_DESCRIPTION>Surface reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhos_444</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>1</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>443.66107</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>4</BAND_INDEX>
+            <BAND_DESCRIPTION>Top-of-atmosphere reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhot_492</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>2</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>492.30157</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>5</BAND_INDEX>
+            <BAND_DESCRIPTION>Surface reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhos_492</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>3</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>492.30127</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>6</BAND_INDEX>
+            <BAND_DESCRIPTION>Top-of-atmosphere reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhot_533</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>4</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>532.7346</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>7</BAND_INDEX>
+            <BAND_DESCRIPTION>Surface reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhos_533</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>5</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>532.7343</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>8</BAND_INDEX>
+            <BAND_DESCRIPTION>Top-of-atmosphere reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhot_566</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>6</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>565.7655</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>9</BAND_INDEX>
+            <BAND_DESCRIPTION>Surface reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhos_566</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>7</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>565.7652</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>10</BAND_INDEX>
+            <BAND_DESCRIPTION>Top-of-atmosphere reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhot_612</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>8</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>611.6474</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>11</BAND_INDEX>
+            <BAND_DESCRIPTION>Surface reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhos_612</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>9</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>611.64716</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>12</BAND_INDEX>
+            <BAND_DESCRIPTION>Top-of-atmosphere reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhot_666</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>10</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>666.4441</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>13</BAND_INDEX>
+            <BAND_DESCRIPTION>Surface reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhos_666</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>11</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>666.4438</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>14</BAND_INDEX>
+            <BAND_DESCRIPTION>Top-of-atmosphere reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhot_707</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>12</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>706.96277</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>15</BAND_INDEX>
+            <BAND_DESCRIPTION>Surface reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhos_707</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>13</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>706.9625</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>16</BAND_INDEX>
+            <BAND_DESCRIPTION>Top-of-atmosphere reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhot_866</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>14</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>865.51166</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>17</BAND_INDEX>
+            <BAND_DESCRIPTION>Surface reflectance</BAND_DESCRIPTION>
+            <BAND_NAME>rhos_866</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <PHYSICAL_UNIT>1</PHYSICAL_UNIT>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <SPECTRAL_BAND_INDEX>15</SPECTRAL_BAND_INDEX>
+            <BAND_WAVELEN>865.5115</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>false</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>0.0</NO_DATA_VALUE>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>18</BAND_INDEX>
+            <BAND_DESCRIPTION />
+            <BAND_NAME>OC3_X</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <BAND_WAVELEN>0.0</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>true</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>NaN</NO_DATA_VALUE>
+            <VIRTUAL_BAND>true</VIRTUAL_BAND>
+            <EXPRESSION>log10(max(rhos_444, rhos_492)/rhos_566)</EXPRESSION>
+        </Spectral_Band_Info>
+        <Spectral_Band_Info>
+            <BAND_INDEX>19</BAND_INDEX>
+            <BAND_DESCRIPTION />
+            <BAND_NAME>OC3_chla</BAND_NAME>
+            <BAND_RASTER_WIDTH>298</BAND_RASTER_WIDTH>
+            <BAND_RASTER_HEIGHT>204</BAND_RASTER_HEIGHT>
+            <DATA_TYPE>float32</DATA_TYPE>
+            <SOLAR_FLUX>0.0</SOLAR_FLUX>
+            <BAND_WAVELEN>0.0</BAND_WAVELEN>
+            <BANDWIDTH>0.0</BANDWIDTH>
+            <SCALING_FACTOR>1.0</SCALING_FACTOR>
+            <SCALING_OFFSET>0.0</SCALING_OFFSET>
+            <LOG10_SCALED>false</LOG10_SCALED>
+            <NO_DATA_VALUE_USED>true</NO_DATA_VALUE_USED>
+            <NO_DATA_VALUE>NaN</NO_DATA_VALUE>
+            <VIRTUAL_BAND>true</VIRTUAL_BAND>
+            <EXPRESSION>pow(10, 0.2424 - (2.2146*OC3_X) + (1.5193 * pow(OC3_X, 2)) - (0.7702 * pow(OC3_X, 3)) - (0.4291 * pow(OC3_X, 4)))</EXPRESSION>
+            <VALID_MASK_TERM>!nan(OC3_X)</VALID_MASK_TERM>
+        </Spectral_Band_Info>
+    </Image_Interpretation>
+    <Dataset_Sources>
+        <MDElem name="metadata">
+            <MDElem name="Global_Attributes">
+                <MDATTR name="generated_by" type="ascii">ACOLITE</MDATTR>
+                <MDATTR name="generated_on" type="ascii">2024-01-23 19:51:00 GMT Standard Time</MDATTR>
+                <MDATTR name="contact" type="ascii">Quinten Vanhellemont</MDATTR>
+                <MDATTR name="product_type" type="ascii">NetCDF</MDATTR>
+                <MDATTR name="metadata_profile" type="ascii">beam</MDATTR>
+                <MDATTR name="metadata_version" type="ascii">0.5</MDATTR>
+                <MDATTR name="auto_grouping" type="ascii">rhot:rhorc:rhos:rhow:Rrs:Lt</MDATTR>
+                <MDATTR name="Conventions" type="ascii">CF-1.7</MDATTR>
+                <MDATTR name="sensor" type="ascii">PlanetScope_SD8</MDATTR>
+                <MDATTR name="satellite_sensor" type="ascii">PlanetScope_24c9</MDATTR>
+                <MDATTR name="isodate" type="ascii">2023-06-02T10:28:55+00:00</MDATTR>
+                <MDATTR name="sza" type="float64">38.70238</MDATTR>
+                <MDATTR name="vza" type="float64">4.909986</MDATTR>
+                <MDATTR name="raa" type="float64">125.65023999999998</MDATTR>
+                <MDATTR name="se_distance" type="float64">1.0141500310042952</MDATTR>
+                <MDATTR name="mus" type="float64">0.7804044348127455</MDATTR>
+                <MDATTR name="acolite_file_type" type="ascii">L2R</MDATTR>
+                <MDATTR name="oname" type="ascii">PlanetScope_24c9_2023_06_02_10_28_55</MDATTR>
+                <MDATTR name="ofile" type="ascii">C:/Users/daa5/OneDrive - University of Stirling/PlanetData/Aithrey2023-Apr-June_psscene_analytic_8b_udm2/acolite_output/PlanetScope_24c9_2023_06_02_10_28_55_L2R.nc</MDATTR>
+                <MDATTR name="Coastal-Blue_wave" type="float64">443.66139844430813</MDATTR>
+                <MDATTR name="Coastal-Blue_name" type="ascii">444</MDATTR>
+                <MDATTR name="Coastal-Blue_f0" type="float64">19192.948544722396</MDATTR>
+                <MDATTR name="Blue_wave" type="float64">492.3015852083212</MDATTR>
+                <MDATTR name="Blue_name" type="ascii">492</MDATTR>
+                <MDATTR name="Blue_f0" type="float64">19877.29669631242</MDATTR>
+                <MDATTR name="Green_i_wave" type="float64">532.7346407883041</MDATTR>
+                <MDATTR name="Green_i_name" type="ascii">533</MDATTR>
+                <MDATTR name="Green_i_f0" type="float64">18885.615674151577</MDATTR>
+                <MDATTR name="Green_ii_wave" type="float64">565.7654745066586</MDATTR>
+                <MDATTR name="Green_ii_name" type="ascii">566</MDATTR>
+                <MDATTR name="Green_ii_f0" type="float64">18636.736243835938</MDATTR>
+                <MDATTR name="Yellow_wave" type="float64">611.6474136768821</MDATTR>
+                <MDATTR name="Yellow_name" type="ascii">612</MDATTR>
+                <MDATTR name="Yellow_f0" type="float64">17216.752127894688</MDATTR>
+                <MDATTR name="Red_wave" type="float64">666.4440658027237</MDATTR>
+                <MDATTR name="Red_name" type="ascii">666</MDATTR>
+                <MDATTR name="Red_f0" type="float64">15289.924640397716</MDATTR>
+                <MDATTR name="Red-edge_wave" type="float64">706.9627528573458</MDATTR>
+                <MDATTR name="Red-edge_name" type="ascii">707</MDATTR>
+                <MDATTR name="Red-edge_f0" type="float64">14020.932075038994</MDATTR>
+                <MDATTR name="NIR_wave" type="float64">865.5116428806534</MDATTR>
+                <MDATTR name="NIR_name" type="ascii">866</MDATTR>
+                <MDATTR name="NIR_f0" type="float64">9515.121201354603</MDATTR>
+                <MDATTR name="scene_xrange" type="float64" elems="2">442473.0,443367.0</MDATTR>
+                <MDATTR name="scene_yrange" type="float64" elems="2">6223080.0,6222468.0</MDATTR>
+                <MDATTR name="scene_proj4_string" type="ascii">+proj=utm +zone=30 +datum=WGS84 +units=m +no_defs</MDATTR>
+                <MDATTR name="scene_pixel_size" type="float64" elems="2">3.0,-3.0</MDATTR>
+                <MDATTR name="scene_dims" type="int32" elems="2">204,298</MDATTR>
+                <MDATTR name="xrange" type="float64" elems="2">442473.0,443367.0</MDATTR>
+                <MDATTR name="yrange" type="float64" elems="2">6223080.0,6222468.0</MDATTR>
+                <MDATTR name="proj4_string" type="ascii">+proj=utm +zone=30 +datum=WGS84 +units=m +no_defs</MDATTR>
+                <MDATTR name="pixel_size" type="float64" elems="2">3.0,-3.0</MDATTR>
+                <MDATTR name="global_dims" type="int32" elems="2">298,204</MDATTR>
+                <MDATTR name="projection_key" type="ascii">transverse_mercator</MDATTR>
+                <MDATTR name="data_dimensions" type="int32" elems="2">204,298</MDATTR>
+                <MDATTR name="data_elements" type="int32">60792</MDATTR>
+                <MDATTR name="uoz" type="float64">0.3</MDATTR>
+                <MDATTR name="uwv" type="float64">1.5</MDATTR>
+                <MDATTR name="wind" type="float64">2.0</MDATTR>
+                <MDATTR name="pressure" type="float64">1013.25</MDATTR>
+                <MDATTR name="acolite_version" type="ascii">Generic GitHub Clone p2024-01-12T11:34:17</MDATTR>
+                <MDATTR name="dsf_aot_estimate" type="ascii">fixed</MDATTR>
+                <MDATTR name="dsf_spectrum_option" type="ascii">darkest</MDATTR>
+                <MDATTR name="dsf_wave_range" type="int32" elems="2">400,900</MDATTR>
+                <MDATTR name="gains_toa" type="float64" elems="8">1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0</MDATTR>
+                <MDATTR name="l2w_mask_wave" type="int32">800</MDATTR>
+                <MDATTR name="l2w_mask_threshold" type="float64">0.1</MDATTR>
+                <MDATTR name="dsf_intercept_pixels" type="int32">1000</MDATTR>
+                <MDATTR name="dsf_tile_dimensions" type="int32" elems="2">2000,2000</MDATTR>
+                <MDATTR name="l2w_mask_negative_wave_range" type="int32" elems="2">400,750</MDATTR>
+                <MDATTR name="nechad_max_rhow_C_factor" type="ascii">1.0</MDATTR>
+                <MDATTR name="default_projection_resolution" type="float64">3.0</MDATTR>
+                <MDATTR name="region_name" type="ascii" />
+                <MDATTR name="polygon_limit" type="ascii">True</MDATTR>
+                <MDATTR name="polylakes" type="ascii">False</MDATTR>
+                <MDATTR name="polylakes_database" type="ascii">worldlakes</MDATTR>
+                <MDATTR name="merge_tiles" type="ascii">False</MDATTR>
+                <MDATTR name="merge_zones" type="ascii">True</MDATTR>
+                <MDATTR name="extend_region" type="ascii">False</MDATTR>
+                <MDATTR name="l1r_crop" type="ascii">False</MDATTR>
+                <MDATTR name="output" type="ascii">C:/Users/daa5/OneDrive - University of Stirling/PlanetData/Aithrey2023-Apr-June_psscene_analytic_8b_udm2/acolite_output</MDATTR>
+                <MDATTR name="output_geolocation" type="ascii">True</MDATTR>
+                <MDATTR name="output_xy" type="ascii">False</MDATTR>
+                <MDATTR name="output_geometry" type="ascii">True</MDATTR>
+                <MDATTR name="output_rhorc" type="ascii">False</MDATTR>
+                <MDATTR name="add_band_name" type="ascii">False</MDATTR>
+                <MDATTR name="compute_contrabands" type="ascii">False</MDATTR>
+                <MDATTR name="netcdf_projection" type="ascii">True</MDATTR>
+                <MDATTR name="netcdf_compression" type="ascii">False</MDATTR>
+                <MDATTR name="netcdf_compression_level" type="int32">4</MDATTR>
+                <MDATTR name="netcdf_discretisation" type="ascii">False</MDATTR>
+                <MDATTR name="landsat_qa_bands" type="ascii">PIXEL</MDATTR>
+                <MDATTR name="landsat_qa_output" type="ascii">False</MDATTR>
+                <MDATTR name="s2_target_res" type="int32">10</MDATTR>
+                <MDATTR name="s2_auxiliary_include" type="ascii">False</MDATTR>
+                <MDATTR name="s2_auxiliary_project" type="ascii">False</MDATTR>
+                <MDATTR name="s2_auxiliary_default" type="ascii">False</MDATTR>
+                <MDATTR name="s2_auxiliary_interpolate" type="ascii">True</MDATTR>
+                <MDATTR name="s2_write_dfoo" type="ascii">False</MDATTR>
+                <MDATTR name="s2_write_vaa" type="ascii">False</MDATTR>
+                <MDATTR name="s2_write_saa" type="ascii">False</MDATTR>
+                <MDATTR name="s2_dilate_blackfill" type="ascii">False</MDATTR>
+                <MDATTR name="s2_dilate_blackfill_iterations" type="int32">2</MDATTR>
+                <MDATTR name="geometry_type" type="ascii">grids_footprint</MDATTR>
+                <MDATTR name="geometry_res" type="int32">60</MDATTR>
+                <MDATTR name="geometry_per_band" type="ascii">False</MDATTR>
+                <MDATTR name="geometry_fixed_footprint" type="ascii">False</MDATTR>
+                <MDATTR name="geometry_override" type="ascii">False</MDATTR>
+                <MDATTR name="smile_correction" type="ascii">True</MDATTR>
+                <MDATTR name="smile_correction_tgas" type="ascii">True</MDATTR>
+                <MDATTR name="use_tpg" type="ascii">True</MDATTR>
+                <MDATTR name="use_supplied_ancillary" type="ascii">True</MDATTR>
+                <MDATTR name="worldview_reproject" type="ascii">False</MDATTR>
+                <MDATTR name="worldview_reproject_resolution" type="float64">2.0</MDATTR>
+                <MDATTR name="worldview_reproject_method" type="ascii">nearest</MDATTR>
+                <MDATTR name="planet_store_sr" type="ascii">False</MDATTR>
+                <MDATTR name="pleiades_skip_pan" type="ascii">False</MDATTR>
+                <MDATTR name="prisma_rhot_per_pixel_sza" type="ascii">True</MDATTR>
+                <MDATTR name="prisma_store_l2c" type="ascii">False</MDATTR>
+                <MDATTR name="prisma_store_l2c_separate_file" type="ascii">True</MDATTR>
+                <MDATTR name="prisma_output_pan" type="ascii">False</MDATTR>
+                <MDATTR name="chris_interband_calibration" type="ascii">False</MDATTR>
+                <MDATTR name="chris_noise_reduction" type="ascii">True</MDATTR>
+                <MDATTR name="desis_mask_ql" type="ascii">True</MDATTR>
+                <MDATTR name="clear_scratch" type="ascii">True</MDATTR>
+                <MDATTR name="gf_reproject_to_utm" type="ascii">False</MDATTR>
+                <MDATTR name="viirs_option" type="ascii">img+mod</MDATTR>
+                <MDATTR name="viirs_scanline_projection" type="ascii">True</MDATTR>
+                <MDATTR name="viirs_scanline_width" type="int32">32</MDATTR>
+                <MDATTR name="viirs_quality_flags" type="int32" elems="6">4,8,512,1024,2048,4096</MDATTR>
+                <MDATTR name="viirs_output_tir" type="ascii">True</MDATTR>
+                <MDATTR name="viirs_output_tir_lt" type="ascii">False</MDATTR>
+                <MDATTR name="viirs_mask_mband" type="ascii">True</MDATTR>
+                <MDATTR name="viirs_mask_immixed" type="ascii">True</MDATTR>
+                <MDATTR name="viirs_mask_immixed_rat" type="ascii">False</MDATTR>
+                <MDATTR name="viirs_mask_immixed_dif" type="ascii">True</MDATTR>
+                <MDATTR name="viirs_mask_immixed_bands" type="ascii">I03/M10</MDATTR>
+                <MDATTR name="viirs_mask_immixed_maxrat" type="float64">0.2</MDATTR>
+                <MDATTR name="viirs_mask_immixed_maxdif" type="float64">0.002</MDATTR>
+                <MDATTR name="tact_run" type="ascii">False</MDATTR>
+                <MDATTR name="tact_profile_source" type="ascii">era5</MDATTR>
+                <MDATTR name="tact_reptran" type="ascii">medium</MDATTR>
+                <MDATTR name="tact_emissivity" type="ascii">water</MDATTR>
+                <MDATTR name="tact_output_atmosphere" type="ascii">False</MDATTR>
+                <MDATTR name="tact_output_intermediate" type="ascii">False</MDATTR>
+                <MDATTR name="tact_map" type="ascii">True</MDATTR>
+                <MDATTR name="ged_fill" type="ascii">True</MDATTR>
+                <MDATTR name="tact_range" type="float64" elems="2">3.5,14.0</MDATTR>
+                <MDATTR name="eminet_water_fill" type="ascii">True</MDATTR>
+                <MDATTR name="eminet_water_threshold" type="float64">0.0215</MDATTR>
+                <MDATTR name="eminet_model_version" type="ascii">20220809</MDATTR>
+                <MDATTR name="eminet_netname" type="ascii">Net2</MDATTR>
+                <MDATTR name="eminet_fill" type="ascii">True</MDATTR>
+                <MDATTR name="eminet_fill_dilate" type="ascii">False</MDATTR>
+                <MDATTR name="verbosity" type="int32">5</MDATTR>
+                <MDATTR name="output_lt" type="ascii">False</MDATTR>
+                <MDATTR name="solar_irradiance_reference" type="ascii">Coddington2021_1_0nm</MDATTR>
+                <MDATTR name="blackfill_skip" type="ascii">True</MDATTR>
+                <MDATTR name="blackfill_max" type="ascii">1.0</MDATTR>
+                <MDATTR name="blackfill_wave" type="int32">1600</MDATTR>
+                <MDATTR name="copy_datasets" type="ascii">lon</MDATTR>
+                <MDATTR name="output_bt" type="ascii">False</MDATTR>
+                <MDATTR name="l2w_mask" type="ascii">True</MDATTR>
+                <MDATTR name="l2w_mask_water_parameters" type="ascii">True</MDATTR>
+                <MDATTR name="l2w_mask_negative_rhow" type="ascii">True</MDATTR>
+                <MDATTR name="l2w_mask_cirrus" type="ascii">True</MDATTR>
+                <MDATTR name="l2w_mask_cirrus_threshold" type="float64">0.005</MDATTR>
+                <MDATTR name="l2w_mask_cirrus_wave" type="int32">1373</MDATTR>
+                <MDATTR name="l2w_mask_high_toa" type="ascii">True</MDATTR>
+                <MDATTR name="l2w_mask_high_toa_threshold" type="float64">0.3</MDATTR>
+                <MDATTR name="l2w_mask_high_toa_wave_range" type="int32" elems="2">400,2500</MDATTR>
+                <MDATTR name="l2w_mask_mixed" type="ascii">True</MDATTR>
+                <MDATTR name="l2w_data_in_memory" type="ascii">False</MDATTR>
+                <MDATTR name="nechad_range" type="int32" elems="2">600,900</MDATTR>
+                <MDATTR name="l2w_mask_smooth" type="ascii">True</MDATTR>
+                <MDATTR name="l2w_mask_smooth_sigma" type="int32">3</MDATTR>
+                <MDATTR name="flag_exponent_swir" type="ascii">0</MDATTR>
+                <MDATTR name="flag_exponent_cirrus" type="ascii">1</MDATTR>
+                <MDATTR name="flag_exponent_toa" type="int32">2</MDATTR>
+                <MDATTR name="flag_exponent_negative" type="int32">3</MDATTR>
+                <MDATTR name="flag_exponent_outofscene" type="int32">4</MDATTR>
+                <MDATTR name="flag_exponent_mixed" type="int32">5</MDATTR>
+                <MDATTR name="atmospheric_correction" type="ascii">True</MDATTR>
+                <MDATTR name="aerosol_correction" type="ascii">dark_spectrum</MDATTR>
+                <MDATTR name="gas_transmittance" type="ascii">True</MDATTR>
+                <MDATTR name="min_tgas_aot" type="float64">0.85</MDATTR>
+                <MDATTR name="min_tgas_rho" type="float64">0.7</MDATTR>
+                <MDATTR name="sza_limit_replace" type="ascii">False</MDATTR>
+                <MDATTR name="sza_limit" type="float64">79.999</MDATTR>
+                <MDATTR name="vza_limit_replace" type="ascii">False</MDATTR>
+                <MDATTR name="vza_limit" type="float64">71.999</MDATTR>
+                <MDATTR name="cirrus_correction" type="ascii">False</MDATTR>
+                <MDATTR name="cirrus_range" type="float64" elems="2">1350.0,1390.0</MDATTR>
+                <MDATTR name="cirrus_g_vnir" type="ascii">1.0</MDATTR>
+                <MDATTR name="cirrus_g_swir" type="float64">0.5</MDATTR>
+                <MDATTR name="resolved_geometry" type="ascii">False</MDATTR>
+                <MDATTR name="ancillary_data" type="ascii">True</MDATTR>
+                <MDATTR name="ancillary_type" type="ascii">GMAO_MERRA2_MET</MDATTR>
+                <MDATTR name="uoz_default" type="float64">0.3</MDATTR>
+                <MDATTR name="uwv_default" type="float64">1.5</MDATTR>
+                <MDATTR name="pressure_default" type="float64">1013.25</MDATTR>
+                <MDATTR name="dem_pressure" type="ascii">False</MDATTR>
+                <MDATTR name="dem_pressure_resolved" type="ascii">True</MDATTR>
+                <MDATTR name="dem_pressure_percentile" type="float64">25.0</MDATTR>
+                <MDATTR name="dem_pressure_write" type="ascii">False</MDATTR>
+                <MDATTR name="dem_source" type="ascii">copernicus30</MDATTR>
+                <MDATTR name="dsf_interface_reflectance" type="ascii">False</MDATTR>
+                <MDATTR name="dsf_interface_option" type="ascii">default</MDATTR>
+                <MDATTR name="dsf_interface_lut" type="ascii">ACOLITE-RSKY-202102-82W</MDATTR>
+                <MDATTR name="wind_default" type="float64">2.0</MDATTR>
+                <MDATTR name="dsf_residual_glint_correction" type="ascii">False</MDATTR>
+                <MDATTR name="dsf_residual_glint_correction_method" type="ascii">default</MDATTR>
+                <MDATTR name="dsf_residual_glint_wave_range" type="int32" elems="2">1500,2400</MDATTR>
+                <MDATTR name="glint_mask_rhos_wave" type="int32">1600</MDATTR>
+                <MDATTR name="glint_mask_rhos_threshold" type="float64">0.05</MDATTR>
+                <MDATTR name="glint_write_rhog_ref" type="ascii">False</MDATTR>
+                <MDATTR name="glint_write_rhog_all" type="ascii">False</MDATTR>
+                <MDATTR name="adjacency_correction" type="ascii">False</MDATTR>
+                <MDATTR name="adjacency_method" type="ascii">acstar3</MDATTR>
+                <MDATTR name="acstar3_method" type="ascii">iter</MDATTR>
+                <MDATTR name="acstar3_psf_raster" type="ascii">False</MDATTR>
+                <MDATTR name="acstar3_max_wavelength" type="float64">720.0</MDATTR>
+                <MDATTR name="acstar3_fit_all_bands" type="ascii">True</MDATTR>
+                <MDATTR name="acstar3_write_rhosu" type="ascii">True</MDATTR>
+                <MDATTR name="acstar3_write_rhoa" type="ascii">True</MDATTR>
+                <MDATTR name="acstar3_write_rhoe" type="ascii">True</MDATTR>
+                <MDATTR name="acstar3_ex" type="ascii">3</MDATTR>
+                <MDATTR name="acstar3_mask_edges" type="ascii">True</MDATTR>
+                <MDATTR name="radcor_initial_aot" type="float64">0.3</MDATTR>
+                <MDATTR name="radcor_psf_radius" type="float64">3.5</MDATTR>
+                <MDATTR name="radcor_psf_rescale" type="ascii">False</MDATTR>
+                <MDATTR name="radcor_psf_complete_method" type="ascii">neighborhood</MDATTR>
+                <MDATTR name="radcor_select_aot" type="ascii">minimum</MDATTR>
+                <MDATTR name="radcor_expand_edge" type="ascii">True</MDATTR>
+                <MDATTR name="radcor_expand_method" type="ascii">mirror</MDATTR>
+                <MDATTR name="radcor_mask_edges" type="ascii">True</MDATTR>
+                <MDATTR name="radcor_fft_stack" type="ascii">False</MDATTR>
+                <MDATTR name="radcor_write_rhot" type="ascii">True</MDATTR>
+                <MDATTR name="radcor_write_rhoe" type="ascii">True</MDATTR>
+                <MDATTR name="radcor_bratio_option" type="ascii">percentile</MDATTR>
+                <MDATTR name="radcor_bratio_percentile" type="ascii">1.0</MDATTR>
+                <MDATTR name="dsf_nbands" type="int32">2</MDATTR>
+                <MDATTR name="dsf_nbands_fit" type="int32">2</MDATTR>
+                <MDATTR name="dsf_aot_compute" type="ascii">min</MDATTR>
+                <MDATTR name="dsf_percentile" type="ascii">1.0</MDATTR>
+                <MDATTR name="dsf_minimum_segment_size" type="ascii">1</MDATTR>
+                <MDATTR name="dsf_allow_lut_boundaries" type="ascii">False</MDATTR>
+                <MDATTR name="dsf_filter_rhot" type="ascii">False</MDATTR>
+                <MDATTR name="dsf_filter_percentile" type="float64">50.0</MDATTR>
+                <MDATTR name="dsf_filter_box" type="int32" elems="2">10,10</MDATTR>
+                <MDATTR name="dsf_filter_aot" type="ascii">False</MDATTR>
+                <MDATTR name="dsf_smooth_aot" type="ascii">False</MDATTR>
+                <MDATTR name="dsf_smooth_box" type="int32" elems="2">10,10</MDATTR>
+                <MDATTR name="dsf_aot_fillnan" type="ascii">True</MDATTR>
+                <MDATTR name="dsf_aot_most_common_model" type="ascii">True</MDATTR>
+                <MDATTR name="dsf_model_selection" type="ascii">min_drmsd</MDATTR>
+                <MDATTR name="dsf_min_tile_cover" type="float64">0.1</MDATTR>
+                <MDATTR name="dsf_min_tile_aot" type="float64">0.01</MDATTR>
+                <MDATTR name="dsf_max_tile_aot" type="float64">1.2</MDATTR>
+                <MDATTR name="dsf_write_tiled_parameters" type="ascii">False</MDATTR>
+                <MDATTR name="dsf_write_aot_550" type="ascii">False</MDATTR>
+                <MDATTR name="dsf_fixed_lut" type="ascii">ACOLITE-LUT-202110-MOD2</MDATTR>
+                <MDATTR name="dsf_tile_smoothing" type="ascii">True</MDATTR>
+                <MDATTR name="dsf_tile_smoothing_kernel_size" type="int32">3</MDATTR>
+                <MDATTR name="dsf_tile_interp_method" type="ascii">linear</MDATTR>
+                <MDATTR name="exp_swir_threshold" type="float64">0.0215</MDATTR>
+                <MDATTR name="exp_fixed_epsilon" type="ascii">True</MDATTR>
+                <MDATTR name="exp_fixed_epsilon_percentile" type="float64">50.0</MDATTR>
+                <MDATTR name="exp_fixed_aerosol_reflectance" type="ascii">True</MDATTR>
+                <MDATTR name="exp_fixed_aerosol_reflectance_percentile" type="float64">5.0</MDATTR>
+                <MDATTR name="exp_wave1" type="int32">1600</MDATTR>
+                <MDATTR name="exp_wave2" type="int32">2200</MDATTR>
+                <MDATTR name="exp_alpha_weighted" type="ascii">True</MDATTR>
+                <MDATTR name="exp_output_intermediate" type="ascii">False</MDATTR>
+                <MDATTR name="gains" type="ascii">False</MDATTR>
+                <MDATTR name="gains_parameter" type="ascii">radiance</MDATTR>
+                <MDATTR name="offsets" type="ascii">False</MDATTR>
+                <MDATTR name="rgb_rhot" type="ascii">True</MDATTR>
+                <MDATTR name="rgb_rhos" type="ascii">True</MDATTR>
+                <MDATTR name="rgb_rhorc" type="ascii">False</MDATTR>
+                <MDATTR name="rgb_rhow" type="ascii">False</MDATTR>
+                <MDATTR name="map_l2w" type="ascii">True</MDATTR>
+                <MDATTR name="map_title" type="ascii">True</MDATTR>
+                <MDATTR name="map_fontname" type="ascii">sans-serif</MDATTR>
+                <MDATTR name="map_fontsize" type="int32">12</MDATTR>
+                <MDATTR name="map_usetex" type="ascii">False</MDATTR>
+                <MDATTR name="map_dpi" type="int32">300</MDATTR>
+                <MDATTR name="map_ext" type="ascii">png</MDATTR>
+                <MDATTR name="map_scalebar" type="ascii">False</MDATTR>
+                <MDATTR name="map_scalebar_position" type="ascii">UL</MDATTR>
+                <MDATTR name="map_scalebar_color" type="ascii">Black</MDATTR>
+                <MDATTR name="map_scalebar_max_fraction" type="float64">0.33</MDATTR>
+                <MDATTR name="map_colorbar" type="ascii">True</MDATTR>
+                <MDATTR name="map_colorbar_orientation" type="ascii">vertical</MDATTR>
+                <MDATTR name="map_auto_range" type="ascii">False</MDATTR>
+                <MDATTR name="map_auto_range_percentiles" type="float64" elems="2">1.0,99.0</MDATTR>
+                <MDATTR name="map_fill_outrange" type="ascii">False</MDATTR>
+                <MDATTR name="map_fill_color" type="ascii">LightGrey</MDATTR>
+                <MDATTR name="map_default_colormap" type="ascii">viridis</MDATTR>
+                <MDATTR name="rgb_red_wl" type="int32">650</MDATTR>
+                <MDATTR name="rgb_green_wl" type="int32">560</MDATTR>
+                <MDATTR name="rgb_blue_wl" type="int32">480</MDATTR>
+                <MDATTR name="rgb_min" type="float64" elems="3">0.0,0.0,0.0</MDATTR>
+                <MDATTR name="rgb_max" type="float64" elems="3">0.15,0.15,0.15</MDATTR>
+                <MDATTR name="rgb_gamma" type="float64" elems="3">1.0,1.0,1.0</MDATTR>
+                <MDATTR name="rgb_autoscale" type="ascii">False</MDATTR>
+                <MDATTR name="rgb_autoscale_percentiles" type="float64" elems="2">5.0,95.0</MDATTR>
+                <MDATTR name="rgb_stretch" type="ascii">linear</MDATTR>
+                <MDATTR name="pans" type="ascii">False</MDATTR>
+                <MDATTR name="pans_method" type="ascii">panr</MDATTR>
+                <MDATTR name="pans_output" type="ascii">rgb</MDATTR>
+                <MDATTR name="pans_bgr" type="ascii">480</MDATTR>
+                <MDATTR name="pans_rgb_rhot" type="ascii">True</MDATTR>
+                <MDATTR name="pans_rgb_rhos" type="ascii">True</MDATTR>
+                <MDATTR name="pans_export_geotiff_rgb" type="ascii">False</MDATTR>
+                <MDATTR name="pans_sensors" type="ascii">L7_ETM</MDATTR>
+                <MDATTR name="map_projected" type="ascii">False</MDATTR>
+                <MDATTR name="map_raster" type="ascii">False</MDATTR>
+                <MDATTR name="map_pcolormesh" type="ascii">False</MDATTR>
+                <MDATTR name="map_cartopy" type="ascii">False</MDATTR>
+                <MDATTR name="map_mask" type="ascii">True</MDATTR>
+                <MDATTR name="map_xtick_rotation" type="ascii">0.0</MDATTR>
+                <MDATTR name="map_ytick_rotation" type="ascii">0.0</MDATTR>
+                <MDATTR name="map_gridline_color" type="ascii">white</MDATTR>
+                <MDATTR name="l1r_export_geotiff" type="ascii">False</MDATTR>
+                <MDATTR name="l2t_export_geotiff" type="ascii">False</MDATTR>
+                <MDATTR name="l2r_export_geotiff" type="ascii">False</MDATTR>
+                <MDATTR name="l2w_export_geotiff" type="ascii">False</MDATTR>
+                <MDATTR name="export_geotiff_coordinates" type="ascii">False</MDATTR>
+                <MDATTR name="export_cloud_optimized_geotiff" type="ascii">False</MDATTR>
+                <MDATTR name="l1r_export_geotiff_rgb" type="ascii">False</MDATTR>
+                <MDATTR name="l2r_export_geotiff_rgb" type="ascii">False</MDATTR>
+                <MDATTR name="use_gdal_merge_import" type="ascii">False</MDATTR>
+                <MDATTR name="l1r_delete_netcdf" type="ascii">False</MDATTR>
+                <MDATTR name="l2t_delete_netcdf" type="ascii">False</MDATTR>
+                <MDATTR name="l2r_delete_netcdf" type="ascii">False</MDATTR>
+                <MDATTR name="l2r_pans_delete_netcdf" type="ascii">False</MDATTR>
+                <MDATTR name="l2w_delete_netcdf" type="ascii">False</MDATTR>
+                <MDATTR name="delete_acolite_run_text_files" type="ascii">False</MDATTR>
+                <MDATTR name="delete_acolite_output_directory" type="ascii">False</MDATTR>
+                <MDATTR name="delete_extracted_input" type="ascii">False</MDATTR>
+                <MDATTR name="reproject_outputs" type="ascii">L1R</MDATTR>
+                <MDATTR name="reproject_before_ac" type="ascii">False</MDATTR>
+                <MDATTR name="output_projection" type="ascii">False</MDATTR>
+                <MDATTR name="output_projection_metres" type="ascii">False</MDATTR>
+                <MDATTR name="output_projection_resolution_align" type="ascii">True</MDATTR>
+                <MDATTR name="output_projection_resampling_method" type="ascii">bilinear</MDATTR>
+                <MDATTR name="output_projection_fillnans" type="ascii">False</MDATTR>
+                <MDATTR name="output_projection_filldistance" type="ascii">1</MDATTR>
+                <MDATTR name="output_projection_radius" type="float64">3.0</MDATTR>
+                <MDATTR name="output_projection_epsilon" type="ascii">0.0</MDATTR>
+                <MDATTR name="output_projection_neighbours" type="int32">32</MDATTR>
+                <MDATTR name="reproject_inputfile" type="ascii">False</MDATTR>
+                <MDATTR name="reproject_inputfile_force" type="ascii">False</MDATTR>
+                <MDATTR name="reproject_inputfile_dem" type="ascii">False</MDATTR>
+                <MDATTR name="luts" type="ascii">ACOLITE-LUT-202110-MOD1</MDATTR>
+                <MDATTR name="luts_pressures" type="int32" elems="4">500,750,1013,1100</MDATTR>
+                <MDATTR name="luts_reduce_dimensions" type="ascii">False</MDATTR>
+                <MDATTR name="slicing" type="ascii">False</MDATTR>
+                <MDATTR name="scene_download" type="ascii">False</MDATTR>
+                <MDATTR name="inputfile" type="ascii">C:/Users/daa5/OneDrive - University of Stirling/PlanetData/Aithrey2023-Apr-June_psscene_analytic_8b_udm2/PSScene</MDATTR>
+                <MDATTR name="runid" type="ascii">20240123_195033</MDATTR>
+                <MDATTR name="_NCProperties" type="ascii">version=2,netcdf=4.8.1,hdf5=1.12.1</MDATTR>
+                <MDATTR name="ac_aot_550" type="float32">0.31065306</MDATTR>
+                <MDATTR name="ac_model" type="ascii">ACOLITE-LUT-202110-MOD2</MDATTR>
+                <MDATTR name="ac_fit" type="float32">4.870516E-4</MDATTR>
+                <MDATTR name="ac_bands" type="ascii">Coastal-Blue,Blue,Green_i,Green_ii,Yellow,Red,Red-edge,NIR</MDATTR>
+                <MDATTR name="ac_nbands_fit" type="int32">2</MDATTR>
+                <MDATTR name="ac_band1_idx" type="int32">0</MDATTR>
+                <MDATTR name="ac_band1" type="ascii">Coastal-Blue</MDATTR>
+                <MDATTR name="ac_band2_idx" type="int32">5</MDATTR>
+                <MDATTR name="ac_band2" type="ascii">Red</MDATTR>
+            </MDElem>
+            <MDElem name="Variable_Attributes">
+                <MDElem name="transverse_mercator">
+                    <MDATTR name="crs_wkt" type="ascii">PROJCRS["WGS 84 / UTM zone 30N",BASEGEOGCRS["WGS 84",DATUM["World Geodetic System 1984",ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4326]],CONVERSION["UTM zone 30N",METHOD["Transverse Mercator",ID["EPSG",9807]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",-3,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.9996,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",0,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["easting",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["northing",north,ORDER[2],LENGTHUNIT["metre",1]],ID["EPSG",32630]]</MDATTR>
+                    <MDATTR name="semi_major_axis" type="float64">6378137.0</MDATTR>
+                    <MDATTR name="semi_minor_axis" type="float64">6356752.314245179</MDATTR>
+                    <MDATTR name="inverse_flattening" type="float64">298.257223563</MDATTR>
+                    <MDATTR name="reference_ellipsoid_name" type="ascii">WGS 84</MDATTR>
+                    <MDATTR name="longitude_of_prime_meridian" type="float64">0.0</MDATTR>
+                    <MDATTR name="prime_meridian_name" type="ascii">Greenwich</MDATTR>
+                    <MDATTR name="geographic_crs_name" type="ascii">WGS 84</MDATTR>
+                    <MDATTR name="horizontal_datum_name" type="ascii">World Geodetic System 1984</MDATTR>
+                    <MDATTR name="projected_crs_name" type="ascii">WGS 84 / UTM zone 30N</MDATTR>
+                    <MDATTR name="grid_mapping_name" type="ascii">transverse_mercator</MDATTR>
+                    <MDATTR name="latitude_of_projection_origin" type="float64">0.0</MDATTR>
+                    <MDATTR name="longitude_of_central_meridian" type="float64">-3.0</MDATTR>
+                    <MDATTR name="false_easting" type="float64">500000.0</MDATTR>
+                    <MDATTR name="false_northing" type="float64">0.0</MDATTR>
+                    <MDATTR name="scale_factor_at_central_meridian" type="float64">0.9996</MDATTR>
+                </MDElem>
+                <MDElem name="x">
+                    <MDATTR name="standard_name" type="ascii">projection_x_coordinate</MDATTR>
+                    <MDATTR name="long_name" type="ascii">x coordinate of projection</MDATTR>
+                    <MDATTR name="units" type="ascii">m</MDATTR>
+                    <MDElem name="Values" desc="Showing 100 of 298 values.">
+                        <MDATTR name="data" type="float64" elems="100">442474.5,442477.5,442480.5,442483.5,442486.5,442489.5,442492.5,442495.5,442498.5,442501.5,442504.5,442507.5,442510.5,442513.5,442516.5,442519.5,442522.5,442525.5,442528.5,442531.5,442534.5,442537.5,442540.5,442543.5,442546.5,442549.5,442552.5,442555.5,442558.5,442561.5,442564.5,442567.5,442570.5,442573.5,442576.5,442579.5,442582.5,442585.5,442588.5,442591.5,442594.5,442597.5,442600.5,442603.5,442606.5,442609.5,442612.5,442615.5,442618.5,442621.5,442624.5,442627.5,442630.5,442633.5,442636.5,442639.5,442642.5,442645.5,442648.5,442651.5,442654.5,442657.5,442660.5,442663.5,442666.5,442669.5,442672.5,442675.5,442678.5,442681.5,442684.5,442687.5,442690.5,442693.5,442696.5,442699.5,442702.5,442705.5,442708.5,442711.5,442714.5,442717.5,442720.5,442723.5,442726.5,442729.5,442732.5,442735.5,442738.5,442741.5,442744.5,442747.5,442750.5,442753.5,442756.5,442759.5,442762.5,442765.5,442768.5,442771.5</MDATTR>
+                    </MDElem>
+                </MDElem>
+                <MDElem name="y">
+                    <MDATTR name="units" type="ascii">m</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">projection_y_coordinate</MDATTR>
+                    <MDATTR name="long_name" type="ascii">y coordinate of projection</MDATTR>
+                    <MDElem name="Values" desc="Showing 100 of 204 values.">
+                        <MDATTR name="data" type="float64" elems="100">6223078.5,6223075.5,6223072.5,6223069.5,6223066.5,6223063.5,6223060.5,6223057.5,6223054.5,6223051.5,6223048.5,6223045.5,6223042.5,6223039.5,6223036.5,6223033.5,6223030.5,6223027.5,6223024.5,6223021.5,6223018.5,6223015.5,6223012.5,6223009.5,6223006.5,6223003.5,6223000.5,6222997.5,6222994.5,6222991.5,6222988.5,6222985.5,6222982.5,6222979.5,6222976.5,6222973.5,6222970.5,6222967.5,6222964.5,6222961.5,6222958.5,6222955.5,6222952.5,6222949.5,6222946.5,6222943.5,6222940.5,6222937.5,6222934.5,6222931.5,6222928.5,6222925.5,6222922.5,6222919.5,6222916.5,6222913.5,6222910.5,6222907.5,6222904.5,6222901.5,6222898.5,6222895.5,6222892.5,6222889.5,6222886.5,6222883.5,6222880.5,6222877.5,6222874.5,6222871.5,6222868.5,6222865.5,6222862.5,6222859.5,6222856.5,6222853.5,6222850.5,6222847.5,6222844.5,6222841.5,6222838.5,6222835.5,6222832.5,6222829.5,6222826.5,6222823.5,6222820.5,6222817.5,6222814.5,6222811.5,6222808.5,6222805.5,6222802.5,6222799.5,6222796.5,6222793.5,6222790.5,6222787.5,6222784.5,6222781.5</MDATTR>
+                    </MDElem>
+                </MDElem>
+                <MDElem name="lon">
+                    <MDATTR name="parameter" type="ascii">lon</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">longitude</MDATTR>
+                    <MDATTR name="long_name" type="ascii">longitude</MDATTR>
+                    <MDATTR name="units" type="ascii">degree_east</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="lat">
+                    <MDATTR name="parameter" type="ascii">lat</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">latitude</MDATTR>
+                    <MDATTR name="long_name" type="ascii">latitude</MDATTR>
+                    <MDATTR name="units" type="ascii">degree_north</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhot_444">
+                    <MDATTR name="wavelength" type="float64">443.66139844430813</MDATTR>
+                    <MDATTR name="percentiles" type="int32" elems="11">0,1,5,10,25,50,75,90,95,99,100</MDATTR>
+                    <MDATTR name="percentiles_data" type="float64" elems="11">0.10974108495202609,0.11814752646650953,0.12091337639484993,0.12239430391553614,0.12496414873084455,0.12879713760791472,0.13827071807112792,0.15397290545958017,0.1693810851784844,0.22453474615109922,0.3170273811563095</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhot_444</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">toa_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Top-of-atmosphere reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhos_444">
+                    <MDATTR name="wave_mu" type="float64">0.443661060724412</MDATTR>
+                    <MDATTR name="wave_nm" type="float64">443.66106072441204</MDATTR>
+                    <MDATTR name="wave_name" type="ascii">444</MDATTR>
+                    <MDATTR name="rhot_ds" type="ascii">rhot_444</MDATTR>
+                    <MDATTR name="rhos_ds" type="ascii">rhos_444</MDATTR>
+                    <MDATTR name="tt_h2o" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_o3" type="float64">0.997981225901348</MDATTR>
+                    <MDATTR name="tt_o2" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_co2" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_n2o" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_ch4" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_gas" type="float64">0.997981225901348</MDATTR>
+                    <MDATTR name="wavelength" type="float64">443.66106072441204</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhos_444</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">surface_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Surface reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhot_492">
+                    <MDATTR name="wavelength" type="float64">492.3015852083212</MDATTR>
+                    <MDATTR name="percentiles" type="int32" elems="11">0,1,5,10,25,50,75,90,95,99,100</MDATTR>
+                    <MDATTR name="percentiles_data" type="float64" elems="11">0.08175401569016494,0.08720147904590271,0.08922061604262405,0.09065083808196833,0.0936059292073782,0.09757058883114873,0.11004296632131283,0.12792074181311633,0.14567232124262475,0.21472470326278933,0.3623509602032831</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhot_492</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">toa_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Top-of-atmosphere reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhos_492">
+                    <MDATTR name="wave_mu" type="float64">0.4923012651262193</MDATTR>
+                    <MDATTR name="wave_nm" type="float64">492.3012651262193</MDATTR>
+                    <MDATTR name="wave_name" type="ascii">492</MDATTR>
+                    <MDATTR name="rhot_ds" type="ascii">rhot_492</MDATTR>
+                    <MDATTR name="rhos_ds" type="ascii">rhos_492</MDATTR>
+                    <MDATTR name="tt_h2o" type="float64">0.9996358262248397</MDATTR>
+                    <MDATTR name="tt_o3" type="float64">0.9831211806248877</MDATTR>
+                    <MDATTR name="tt_o2" type="float64">0.9999054057412469</MDATTR>
+                    <MDATTR name="tt_co2" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_n2o" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_ch4" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_gas" type="float64">0.9826655879069668</MDATTR>
+                    <MDATTR name="wavelength" type="float64">492.3012651262193</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhos_492</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">surface_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Surface reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhot_533">
+                    <MDATTR name="wavelength" type="float64">532.7346407883041</MDATTR>
+                    <MDATTR name="percentiles" type="int32" elems="11">0,1,5,10,25,50,75,90,95,99,100</MDATTR>
+                    <MDATTR name="percentiles_data" type="float64" elems="11">0.06662797650122596,0.07110131230545806,0.07642885293662896,0.0818687889397655,0.08746607846365391,0.0958732522866831,0.10697791503688743,0.12060023411912188,0.13675144907058304,0.21011190835255028,0.377715887027699</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhot_533</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">toa_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Top-of-atmosphere reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhos_533">
+                    <MDATTR name="wave_mu" type="float64">0.5327343353679451</MDATTR>
+                    <MDATTR name="wave_nm" type="float64">532.7343353679452</MDATTR>
+                    <MDATTR name="wave_name" type="ascii">533</MDATTR>
+                    <MDATTR name="rhot_ds" type="ascii">rhot_533</MDATTR>
+                    <MDATTR name="rhos_ds" type="ascii">rhos_533</MDATTR>
+                    <MDATTR name="tt_h2o" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_o3" type="float64">0.9541839654098023</MDATTR>
+                    <MDATTR name="tt_o2" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_co2" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_n2o" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_ch4" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_gas" type="float64">0.9541839654098023</MDATTR>
+                    <MDATTR name="wavelength" type="float64">532.7343353679452</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhos_533</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">surface_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Surface reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhot_566">
+                    <MDATTR name="wavelength" type="float64">565.7654745066586</MDATTR>
+                    <MDATTR name="percentiles" type="int32" elems="11">0,1,5,10,25,50,75,90,95,99,100</MDATTR>
+                    <MDATTR name="percentiles_data" type="float64" elems="11">0.05887666694374993,0.06207028700269025,0.06932436685085472,0.07630470783682429,0.08378690340348449,0.09311683628996016,0.10548070823242915,0.11868860833333238,0.13408641933179466,0.2101424810354584,0.3851962022519028</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhot_566</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">toa_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Top-of-atmosphere reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhos_566">
+                    <MDATTR name="wave_mu" type="float64">0.5657651810638659</MDATTR>
+                    <MDATTR name="wave_nm" type="float64">565.7651810638658</MDATTR>
+                    <MDATTR name="wave_name" type="ascii">566</MDATTR>
+                    <MDATTR name="rhot_ds" type="ascii">rhot_566</MDATTR>
+                    <MDATTR name="rhos_ds" type="ascii">rhos_566</MDATTR>
+                    <MDATTR name="tt_h2o" type="float64">0.9974574768565296</MDATTR>
+                    <MDATTR name="tt_o3" type="float64">0.9265767215936029</MDATTR>
+                    <MDATTR name="tt_o2" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_co2" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_n2o" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_ch4" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_gas" type="float64">0.9242438761871405</MDATTR>
+                    <MDATTR name="wavelength" type="float64">565.7651810638658</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhos_566</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">surface_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Surface reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhot_612">
+                    <MDATTR name="wavelength" type="float64">611.6474136768821</MDATTR>
+                    <MDATTR name="percentiles" type="int32" elems="11">0,1,5,10,25,50,75,90,95,99,100</MDATTR>
+                    <MDATTR name="percentiles_data" type="float64" elems="11">0.04430237065456564,0.049843231621877114,0.05545764384096706,0.05989523603160147,0.06528899449535601,0.07524293056937574,0.09402301685681197,0.1153773969564947,0.1336548830234447,0.21582634151035218,0.42600885030090346</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhot_612</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">toa_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Top-of-atmosphere reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhos_612">
+                    <MDATTR name="wave_mu" type="float64">0.6116471368716947</MDATTR>
+                    <MDATTR name="wave_nm" type="float64">611.6471368716947</MDATTR>
+                    <MDATTR name="wave_name" type="ascii">612</MDATTR>
+                    <MDATTR name="rhot_ds" type="ascii">rhot_612</MDATTR>
+                    <MDATTR name="rhos_ds" type="ascii">rhos_612</MDATTR>
+                    <MDATTR name="tt_h2o" type="float64">0.9997151882965662</MDATTR>
+                    <MDATTR name="tt_o3" type="float64">0.9188393028001107</MDATTR>
+                    <MDATTR name="tt_o2" type="float64">0.9999916348872794</MDATTR>
+                    <MDATTR name="tt_co2" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_n2o" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_ch4" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_gas" type="float64">0.9185710411106727</MDATTR>
+                    <MDATTR name="wavelength" type="float64">611.6471368716947</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhos_612</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">surface_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Surface reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhot_666">
+                    <MDATTR name="wavelength" type="float64">666.4440658027237</MDATTR>
+                    <MDATTR name="percentiles" type="int32" elems="11">0,1,5,10,25,50,75,90,95,99,100</MDATTR>
+                    <MDATTR name="percentiles_data" type="float64" elems="11">0.03303062196667658,0.03808268717188729,0.04129514167737454,0.04412319991724793,0.04840647259123093,0.056259139160199756,0.07973476823876043,0.10688961871676801,0.12675466858616993,0.21483632716397374,0.48851273984298393</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhot_666</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">toa_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Top-of-atmosphere reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhos_666">
+                    <MDATTR name="wave_mu" type="float64">0.6664438088677732</MDATTR>
+                    <MDATTR name="wave_nm" type="float64">666.4438088677732</MDATTR>
+                    <MDATTR name="wave_name" type="ascii">666</MDATTR>
+                    <MDATTR name="rhot_ds" type="ascii">rhot_666</MDATTR>
+                    <MDATTR name="rhos_ds" type="ascii">rhos_666</MDATTR>
+                    <MDATTR name="tt_h2o" type="float64">0.9919257073423049</MDATTR>
+                    <MDATTR name="tt_o3" type="float64">0.9668707835754149</MDATTR>
+                    <MDATTR name="tt_o2" type="float64">0.9998265966565181</MDATTR>
+                    <MDATTR name="tt_co2" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_n2o" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_ch4" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_gas" type="float64">0.95893919302284</MDATTR>
+                    <MDATTR name="wavelength" type="float64">666.4438088677732</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhos_666</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">surface_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Surface reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhot_707">
+                    <MDATTR name="wavelength" type="float64">706.9627528573458</MDATTR>
+                    <MDATTR name="percentiles" type="int32" elems="11">0,1,5,10,25,50,75,90,95,99,100</MDATTR>
+                    <MDATTR name="percentiles_data" type="float64" elems="11">0.04106498500434742,0.050672254190854145,0.05944002475611402,0.06845142604012736,0.10276519835612602,0.12384072318323212,0.14083616729868398,0.16244004790140001,0.17583973743284004,0.24016705311334566,0.48605796046246524</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhot_707</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">toa_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Top-of-atmosphere reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhos_707">
+                    <MDATTR name="wave_mu" type="float64">0.7069625106151908</MDATTR>
+                    <MDATTR name="wave_nm" type="float64">706.9625106151908</MDATTR>
+                    <MDATTR name="wave_name" type="ascii">707</MDATTR>
+                    <MDATTR name="rhot_ds" type="ascii">rhot_707</MDATTR>
+                    <MDATTR name="rhos_ds" type="ascii">rhos_707</MDATTR>
+                    <MDATTR name="tt_h2o" type="float64">0.9631541762733447</MDATTR>
+                    <MDATTR name="tt_o3" type="float64">0.9866571878403146</MDATTR>
+                    <MDATTR name="tt_o2" type="float64">0.9999868695569318</MDATTR>
+                    <MDATTR name="tt_co2" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_n2o" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_ch4" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_gas" type="float64">0.9502937027757528</MDATTR>
+                    <MDATTR name="wavelength" type="float64">706.9625106151908</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhos_707</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">surface_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Surface reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhot_866">
+                    <MDATTR name="wavelength" type="float64">865.5116428806534</MDATTR>
+                    <MDATTR name="percentiles" type="int32" elems="11">0,1,5,10,25,50,75,90,95,99,100</MDATTR>
+                    <MDATTR name="percentiles_data" type="float64" elems="11">0.04706428966641523,0.06340424618956585,0.08469833846707597,0.1301981642110619,0.2344523017085043,0.341444251070198,0.43035795066159743,0.4886342317720894,0.5133179958815297,0.5529815020482306,0.6633327031100296</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhot_866</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">toa_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Top-of-atmosphere reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+                <MDElem name="rhos_866">
+                    <MDATTR name="wave_mu" type="float64">0.8655114581311381</MDATTR>
+                    <MDATTR name="wave_nm" type="float64">865.511458131138</MDATTR>
+                    <MDATTR name="wave_name" type="ascii">866</MDATTR>
+                    <MDATTR name="rhot_ds" type="ascii">rhot_866</MDATTR>
+                    <MDATTR name="rhos_ds" type="ascii">rhos_866</MDATTR>
+                    <MDATTR name="tt_h2o" type="float64">0.9968930190331304</MDATTR>
+                    <MDATTR name="tt_o3" type="float64">0.9985231993091527</MDATTR>
+                    <MDATTR name="tt_o2" type="float64">0.9999667505674317</MDATTR>
+                    <MDATTR name="tt_co2" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_n2o" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_ch4" type="float64">1.0</MDATTR>
+                    <MDATTR name="tt_gas" type="float64">0.9953888547785716</MDATTR>
+                    <MDATTR name="wavelength" type="float64">865.511458131138</MDATTR>
+                    <MDATTR name="parameter" type="ascii">rhos_866</MDATTR>
+                    <MDATTR name="standard_name" type="ascii">surface_bidirectional_reflectance</MDATTR>
+                    <MDATTR name="long_name" type="ascii">Surface reflectance</MDATTR>
+                    <MDATTR name="units" type="ascii">1</MDATTR>
+                    <MDATTR name="grid_mapping" type="ascii">transverse_mercator</MDATTR>
+                </MDElem>
+            </MDElem>
+        </MDElem>
+    </Dataset_Sources>
+</Dimap_Document>

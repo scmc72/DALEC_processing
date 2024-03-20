@@ -1,13 +1,13 @@
-Temperature gradient of pure water absorption (m^-1 °C^-1)
+Temperature gradient of pure water absorption (m^-1 âˆžC^-1)
 
-Rüdiger Röttgers, Roland Doerffer, David McKee, Wolfgang Schönfeld:
+RÂ¸diger RË†ttgers, Roland Doerffer, David McKee, Wolfgang SchË†nfeld:
 "Pure water spectral absorption, scattering, and real part of refractive index model"
 Algorithm Theoretical Basis Document "The Water Optical Properties Processor (WOPP)"
 Distribution: Marc Bouvet, ESA/ESRIN
 Revision 7, May 2013
 
     da/dT
-nm  1/(m °C)
+nm  1/(m âˆžC)
 300	0
 301	0
 302	0

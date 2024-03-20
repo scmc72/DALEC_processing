@@ -3,6 +3,13 @@ import numpy as np
 import spectralConv
 from scipy import interpolate
 import os
+import sys
+import lmfit as lm
+
+lib_path = os.path.abspath(os.path.join(os.path.abspath(''), 'rrs_model_3C-master/'))
+sys.path.append(lib_path)
+
+from rrs_model_3C import rrs_model_3C
 
 def load_DALEC_spect_wavelengths(filepath, header=15):
     """
@@ -17,7 +24,7 @@ def load_DALEC_spect_wavelengths(filepath, header=15):
 
 def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIndex=True,
                    removeSaturated=True, dropDuplicates=True,
-                   parse_dates=[[' UTC Date', ' UTC Time']]):
+                   parse_dates=[[' UTC Date', ' UTC Time']],):
     """
     loads DALEC log file (excluding spectral wavelength mappings)
     optionally returns log file in long format
@@ -28,9 +35,13 @@ def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIn
     DALEC_log = pd.read_csv(filepath,
                             header=header,
                             parse_dates=parse_dates,
+                            date_format={' UTC Date':'%d/%m/%Y',
+                                         ' UTC Time':'%H:%M:%S.%f',
+                                         ' UTC Date_ UTC Time':'%d/%m/%Y %H:%M:%S.%f'},
                             dayfirst=True,
-                            infer_datetime_format=True,
+                            #infer_datetime_format=True,
                             dtype={'Sample #': str,
+                                   'GPS Fix': str,
                                    ' Lat': str, 
                                    ' Lon': str,
                                    ' Solar Azi': str,
@@ -80,8 +91,10 @@ def load_DALEC_log(filepath, header=216, dropNA=True, longFormat=True, integerIn
         DALEC_log.sort_index(inplace=True)
         # change saturation flag to int.
         DALEC_log[' Saturation Flag'] = DALEC_log[' Saturation Flag'].astype(int)
+        DALEC_log[' Solar Elev'] = DALEC_log[' Solar Elev'].astype(float)
         # format column as datetimes
-        DALEC_log[' UTC Date_ UTC Time'] = pd.to_datetime(DALEC_log[' UTC Date_ UTC Time'], dayfirst=True, infer_datetime_format=True)
+        DALEC_log[' UTC Date_ UTC Time'] = pd.to_datetime(DALEC_log[' UTC Date_ UTC Time'], dayfirst=True, #infer_datetime_format=True
+                                                         )
         # remove saturated readings - this hasn't been tested on a df which isn't in long format!
         if removeSaturated:
             indSat = DALEC_log[DALEC_log[' Saturation Flag'] == 1].index.get_level_values(0)
@@ -149,15 +162,19 @@ def resampleMultiLog(dalecLog, freq='1D', level='Datetime', method='median'):
     - the aggregation method can be specified as a string, and defaults to median
     - any pandas aggregation function can be used (eg. 'mean', 'sum', 'std', 'min', 'max', 'describe')
     - most aggregation will only work on numeric data, and automatically removes non-numeric columns
+    - UPDATE: not sure that this does actually work on non-numeric data with latest pandas!
     - (currently most cols are non-numeric, as that seems to be the easiest way to load em idk?)
     '''
-    groupby = (dalecLog.groupby(['Channel', 'spectral_ind']
+    # select only columns which are numeric
+    groupby = (dalecLog.select_dtypes(['number']).groupby(['Channel', 'spectral_ind']
                                 +[pd.Grouper(freq=freq, level='Datetime')]))
                            
     groupedMethod = getattr(groupby, method) # this basically allows you to call any method as a string
     return groupedMethod()
-    
-def uniform_grid_spectra_multi(DALEC_log, spect_wavelengths=None, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000,
+
+
+def uniform_grid_spectra_multi(DALEC_log, spect_wavelengths=None, RHO=0.028, Rrs_method='standard',
+                               nsteps=601, min_waveL=400, max_waveL=1000,
                                resample_to_SDs=True, col_end='_median'):
     '''
     takes a DALEC logfile (eg. from load_DALEC_log, or aggregated with resampleMultiLog)
@@ -167,6 +184,9 @@ def uniform_grid_spectra_multi(DALEC_log, spect_wavelengths=None, RHO=0.028, nst
     if you have too many dates! hence, good idea to use resampleMultiLog() beforehand
     use col_end to add a suffix to the column names to indicate how they were previously calc'd
     eg. '_mean'
+    
+    Rrs_method allows selection of either 'standard', which uses the rho parameter
+    or '3C', which uses the 3C method from here https://gitlab.com/pgroetsch/rrs_model_3C/
     '''
     
     if spect_wavelengths is None:
@@ -183,24 +203,44 @@ def uniform_grid_spectra_multi(DALEC_log, spect_wavelengths=None, RHO=0.028, nst
         Lu = uniform_grid_spectra(df, spect_wavelengths, param='Lu', nsteps=nsteps)
         Lsky = uniform_grid_spectra(df, spect_wavelengths, param='Lsky', nsteps=nsteps)
         Ed = uniform_grid_spectra(df, spect_wavelengths, param='Ed', nsteps=nsteps)
-        Rrs = (Lu[:, 1] - (RHO * Lsky[:, 1])) / Ed[:, 1]
+        if Rrs_method == 'standard':
+            Rrs = (Lu[:, 1] - (RHO * Lsky[:, 1])) / Ed[:, 1]
+            valid_wl = Lu[:, 0] <= 1000
+            data_len = nsteps
+            Rrs_name = 'Rrs' + col_end
+        elif Rrs_method == '3C':
+            wl = Lu[:, 0]
+            valid_wl = wl <= 900
+            sun_zenith = 90 - df['Solar Elev'][0]
+            Rrs = Rrs_3C_calc(wl[valid_wl], Lu[:, 1][valid_wl], 
+                              Lsky[:, 1][valid_wl], Ed[:, 1][valid_wl],
+                              sun_zenith)
+            data_len = len(wl[valid_wl])
+            Rrs_name = 'Rrs_3C' + col_end
+        else:
+            print('ERROR - unrecognised Rrs_method!')
+            print('we only accept "standard", or "3C" as Rrs methods')
         
         if resample_to_SDs:
             DALEC_SD = spectralConv.SD_band_calc(RSR_doves, Rrs,
                                                  RSR_doves['Wavelength (nm)'].values)
 
-            df_tmp = pd.DataFrame(data=DALEC_SD, columns=['Rrs'+col_end])
+
+            df_tmp = pd.DataFrame(data=DALEC_SD, columns=[Rrs_name])
             df_tmp['Date'] = np.full((8,), date)
             df_tmp['Wavelength'] = doves_wavelengths
+                
             df_tmp.set_index(['Date', 'Wavelength'], inplace=True)
+            
 
         else:
-            df_tmp = pd.DataFrame(index=np.full((nsteps,), date),
-                                  data={'Wavelength': Lu[:, 0],
-                                        'Lu'+col_end: Lu[:, 1], 
-                                        'Lsky'+col_end: Lsky[:, 1],
-                                        'Ed'+col_end: Ed[:, 1],
-                                        'Rrs'+col_end: Rrs})
+            df_tmp = pd.DataFrame(index=np.full((data_len,), date),
+                                  data={'Wavelength': Lu[:, 0][valid_wl],
+                                        'Lu'+col_end: Lu[:, 1][valid_wl], 
+                                        'Lsky'+col_end: Lsky[:, 1][valid_wl],
+                                        'Ed'+col_end: Ed[:, 1][valid_wl],
+                                        Rrs_name: Rrs})
+
             df_tmp.index.rename('Date', inplace=True)
             df_tmp.set_index('Wavelength', append=True, inplace=True)
             
@@ -210,6 +250,61 @@ def uniform_grid_spectra_multi(DALEC_log, spect_wavelengths=None, RHO=0.028, nst
             df_out = pd.concat([df_out, df_tmp])
 
     return df_out
+
+    
+# def uniform_grid_spectra_multi(DALEC_log, spect_wavelengths=None, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000,
+#                                resample_to_SDs=True, col_end='_median'):
+#     '''
+#     takes a DALEC logfile (eg. from load_DALEC_log, or aggregated with resampleMultiLog)
+#     and performs regridding followed by calculation of Rrs 
+#     resample_to_SDs options allows for resampling to the superDoves wavebands
+#     NOTE this will regrid for all unique datetimes in the Datetime column and will be VERY SLOW
+#     if you have too many dates! hence, good idea to use resampleMultiLog() beforehand
+#     use col_end to add a suffix to the column names to indicate how they were previously calc'd
+#     eg. '_mean'
+#     '''
+    
+#     if spect_wavelengths is None:
+#         spect_wavelengths = load_DALEC_spect_wavelengths('C:/Users/daa5/Project/DALEC_processing/data/Jul-Aug/DALEC_72_73.dtf')
+    
+#     df_out = None
+#     if resample_to_SDs:
+#         RSR_doves_file='non-DALEC-data/RSR-Superdove.csv'
+#         RSR_doves = pd.read_csv(RSR_doves_file)
+#         doves_wavelengths = [444., 492., 533., 566., 612., 666., 707., 866.]
+
+#     for date in DALEC_log.index.get_level_values('Datetime').unique():
+#         df = DALEC_log.loc[:, :, [date]]
+#         Lu = uniform_grid_spectra(df, spect_wavelengths, param='Lu', nsteps=nsteps)
+#         Lsky = uniform_grid_spectra(df, spect_wavelengths, param='Lsky', nsteps=nsteps)
+#         Ed = uniform_grid_spectra(df, spect_wavelengths, param='Ed', nsteps=nsteps)
+#         Rrs = (Lu[:, 1] - (RHO * Lsky[:, 1])) / Ed[:, 1]
+        
+#         if resample_to_SDs:
+#             DALEC_SD = spectralConv.SD_band_calc(RSR_doves, Rrs,
+#                                                  RSR_doves['Wavelength (nm)'].values)
+
+#             df_tmp = pd.DataFrame(data=DALEC_SD, columns=['Rrs'+col_end])
+#             df_tmp['Date'] = np.full((8,), date)
+#             df_tmp['Wavelength'] = doves_wavelengths
+#             df_tmp.set_index(['Date', 'Wavelength'], inplace=True)
+
+#         else:
+#             df_tmp = pd.DataFrame(index=np.full((nsteps,), date),
+#                                   data={'Wavelength': Lu[:, 0],
+#                                         'Lu'+col_end: Lu[:, 1], 
+#                                         'Lsky'+col_end: Lsky[:, 1],
+#                                         'Ed'+col_end: Ed[:, 1],
+#                                         'Rrs'+col_end: Rrs})
+#             df_tmp.index.rename('Date', inplace=True)
+#             df_tmp.set_index('Wavelength', append=True, inplace=True)
+            
+#         if df_out is None:
+#             df_out = df_tmp.copy()
+#         else:
+#             df_out = pd.concat([df_out, df_tmp])
+
+#     return df_out
 
 
 def uniform_grid_spectra_mean(DALEC_log, spect_wavelengths, RHO=0.028, nsteps=601, min_waveL=400, max_waveL=1000):
@@ -350,7 +445,7 @@ def multiLogLoad(filepath,
                                    ' Lat': str, 
                                    ' Lon': str,
                                    ' Solar Azi': str,
-                                   ' Solar Elev': str,
+                                   ' Solar Elev': float,
                                    ' Relaz': str,
                                    ' Heading': str,
                                    ' Pitch': str,
@@ -409,6 +504,54 @@ def multiLogLoad(filepath,
     return tables
     
 
+def Rrs_3C_calc(wl, Lu, Ls, Ed, sun_zenith):
+    '''
+    use the 3C method to model Rrs
+    Lu, Ls, and Ed should be obtained with uniform_grid_spectra()
+    and wl is the wavelength grid
+    
+    Max wavelength we can work with is 900 nm
+    
+    Rrs_obs is the final derived Rrs that we're interested in
+    '''
+    params = lm.Parameters()
+    # (Name,  Value,  Vary,   Min,  Max,  Expr)
+    params.add_many(
+        ('C_chl', 5, True, 0.01, 100, None),             
+        ('C_mie', 0, False, 0, 100, None), 
+        ('n_mie', -1, False, -2, 2, None), 
+        ('C_sm', 1, True, 0.01, 100, None), 
+        ('C_y', 0.5, True, 0.01, 5, None),         
+        ('S_y', 0.018, False, 0.01, 0.03, None),         
+        #('S_y', -1, False, -1, 0.03, None),
+        ('T_w', 20, False, 0, 35, None),         
+        ('theta_sun', sun_zenith, False, 0, 90, None),         
+        ('theta_view', 40, False, 0, 180, None),                 
+        ('n_w', 1.34, False, 1.33, 1.34, None),
+        ('rho_s', 0.0256, False, 0.0, 0.1, None),
+        ('am', 1, False, 1, 10, None), 
+        ('rh', 60, False, 0, 100, None), 
+        ('pressure', 1013.25, False, 800, 1100, None), 
+        ('delta', 0.00, False, 0, 1, None),
+        ('rho_dd', 0.0, True, 0, 0.1, None),
+        ('rho_ds', 0.01, True, 0.0, 0.1, None),
+        ('alpha', 1.0, True, 0, 3, None),
+        ('beta', 0.05, True, 0.0, 10, None), 
+        )
+
+    # weights - NEED TO UNDERSTAND WHAT the deal with this is! 
+    weights = pd.Series(1, index=pd.Index(wl))
+    weights.loc[:500] = 5
+    weights.loc[675:750] = 0.1
+    weights.loc[760:770] = 0.1    
+
+    # initialize model
+    m = rrs_model_3C(wl_range = (wl[0], wl[-1]), spectra_path=lib_path+'/spectra/')
+
+    # fit model
+    reg, Rrs_modelled, Rrs_refl, Lu_Ed_modelled, Rrs_obs = m.fit_LuEd(wl, Ls, Lu, Ed, params,
+                                                                      weights.values, verbose=False)
+    return Rrs_obs
     
     
     

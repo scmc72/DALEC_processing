@@ -1,0 +1,47 @@
+********************************************************************
+
+EDINA DIGIMAP:
+
+DIGITAL DATA SUPPLY
+
+********************************************************************
+
+
+This data is distributed under licence by:
+
+    EDINA
+    University of Edinburgh
+    https://edina.ac.uk
+
+    Tel:    0131 650 3302
+    Fax:    0131 650 3308
+    Email:  digimap@ed.ac.uk
+		
+
+
+---------------------------------------------------------
+
+CONTENTS
+
+You will have received the data files listed below, each product and area has
+its own folder. Note that each data folder contains a conditions.txt file
+which states the conditions for use of the data within. These conditions can
+vary between different data products.
+
+
+
+-------------------------------------------------------------------------------
+Folder:           vml_5464100
+Extent:           280213.13000503846, 696104.728865773 - 281531.74197619845, 696884.608319533
+Date Ordered:     11 March 2024 at 12:20:26
+Product:          OS VectorMap® Local
+Version:          January 2024
+Format:           SHAPE
+Theme:            N/A
+Area:             1 tiles
+Tiles:
+ 
+Tile Name:        ns89nw
+Extent:           280000.0, 695000.0 - 285000.0, 700000.0
+Last Amended:     8 January 2024
+     
