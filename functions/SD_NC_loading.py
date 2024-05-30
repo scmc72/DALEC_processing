@@ -47,21 +47,31 @@ def get_SD_NC_Spectra(NC_file, lat_pt, lon_pt):
     return df
 
 
-def get_SD_NC_Spectra_grid(NC_file, lat_pt, lon_pt, shape=(3, 3), variable='rhos'):
+def get_SD_NC_Spectra_grid(NC_file, lat_pt, lon_pt, shape=(3, 3), variable='rhos',
+                           wavelengths=None, lat_name='lat', lon_name='lon'):
     '''
     function to extract surface reflectance spectra from a superdoves NetCDF file at a given lat_pt, lon_pt coordinate
     gets values from several pixels in a grid (with shape = shape) around the chosen coord
     '''
-    lat, lon = NC_file.variables['lat'][:], NC_file.variables['lon'][:]
+    lat, lon = NC_file.variables[lat_name][:], NC_file.variables[lon_name][:]
     iy, ix = getclosest_ij(lat, lon, lat_pt, lon_pt)
+    if wavelengths is None:
+        # try to get wavelengths data from band names and create df for this
+        wavelengths = []    
+        for var in list(NC_file.variables.keys()):
+            # only interested in surface reflectance:
+            if variable in var:
+                # assume that band name is of the form variable_XXX
+                wavelengths.append(float(var[len(variable)+1:]))
 
-    # get wavelengths data and create df for this
-    wavelengths = []    
-    for var in list(NC_file.variables.keys()):
-        # only interested in surface reflectance:
-        if variable in var:
-            wavelengths.append(float(var[len(variable)+1:]))
-            
+    else:
+        print('are you sure you know the wavelength order? - best double check it!')
+        _count = 0
+        for var in list(NC_file.variables.keys()):
+            # only interested in surface reflectance:
+            if variable in var:
+                print(str(var) + ' : ' + str(wavelengths[_count]))
+                _count +=1
     df1 = pd.DataFrame(data={'Wavelength':wavelengths})
                        
     # generate x and y coords for grid with shape=(shape[0], shape[1])
@@ -89,7 +99,9 @@ def get_SD_NC_Spectra_grid(NC_file, lat_pt, lon_pt, shape=(3, 3), variable='rhos
 
 def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1),
                       div_by_pi=True, skipSameDay=True,
-                      dateOnly=False, filetype="L2R.nc", variable='rhos'):
+                      dateOnly=False, filetype="L2R.nc", variable='rhos',
+                      wavelengths_S2A=None, wavelengths_S2B=None, date_name='isodate',
+                      lat_name='lat', lon_name='lon'):
     '''
     Loads all L2R netcdfs in a given directory. Then extracts a grid of shape=pixel_grid_shape at the given coord
     Returns a pandas DF with Date, Wavelength, and rho_s columns
@@ -109,9 +121,14 @@ def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1),
 
     for i in range(len(SD_files)):
         f = netCDF4.Dataset(SD_files[i])
+        if 'S2A' in SD_files[i]:
+            wavelengths = wavelengths_S2A
+        elif 'S2B' in SD_files[i]:
+            wavelengths = wavelengths_S2B
         SD_spect = get_SD_NC_Spectra_grid(f, coord[0], coord[1], shape=pixel_grid_shape,
-                                          variable=variable)
-        ncdf_dates.append(f.isodate)
+                                          variable=variable, wavelengths=wavelengths,
+                                          lat_name=lat_name, lon_name=lon_name)
+        ncdf_dates.append(getattr(f, date_name))
         indexes.append(i)
         SD_spect_list.append(SD_spect)
     
@@ -143,6 +160,83 @@ def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1),
         SD_df = SD_df.div(np.pi)
     # don't really need to sort, but in case I change something its good to have:
     return SD_df.sort_values(['Date', 'Wavelength'])
+
+
+def get_S2_NC_IDEPIX_flag_grid(NC_file, lat_pt, lon_pt, shape=(3, 3),
+                               lat_name='lat', lon_name='lon'):
+    '''
+    take idepix nc file and extract grid of pixels with shape=shape from it centred at lat, lon
+    '''
+    lat, lon = NC_file.variables[lat_name][:], NC_file.variables[lon_name][:]
+    iy, ix = getclosest_ij(lat, lon, lat_pt, lon_pt)
+    
+                       
+    # generate x and y coords for grid with shape=(shape[0], shape[1])
+    x = np.linspace(ix - shape[0]//2,
+                    ix + shape[0]//2 - (1 - shape[0]%2),
+                    shape[0],
+                    dtype=int)
+    y = np.linspace(iy - shape[1]//2,
+                    iy + shape[1]//2 - (1 - shape[1]%2),
+                    shape[1],
+                    dtype=int)
+    df1 = pd.DataFrame(data={'empty?':[]})
+    for i in x:
+        for j in y:
+            flag = ([NC_file.variables['pixel_classif_flags'][j, i]])
+            # might want to think about if I want to include the lat and lon of each pixel too?
+            var_name = 'IDEPIX_flag' + str(i) + '_' + str(j)
+            df2 = pd.DataFrame(data={var_name:flag})
+            df1 = pd.concat([df1, df2], axis=1)
+    df1.drop('empty?', inplace=True, axis=1)
+
+    return df1
+
+def load_multiple_IDEPIXs(directory, coord, pixel_grid_shape=(1, 1),
+                          dateOnly=False, filetype=".nc",
+                          date_name='start_date',
+                          lat_name='lat', lon_name='lon'):
+    '''
+    load multiple idepix nc files and get grid of pixels from all of them using get_S2_NC_IDEPIX_flag_grid()
+    '''
+    # could use list comprehensions in a few places here if things start getting slow!
+    files = []
+    for file in os.listdir(directory):
+        if file.endswith(filetype):
+            files.append(os.path.join(directory, file))
+
+    ncdf_dates = []
+    indexes = []
+    flag_list = []
+
+    for i in range(len(files)):
+        f = netCDF4.Dataset(files[i])
+        flag = get_S2_NC_IDEPIX_flag_grid(f, coord[0], coord[1], shape=pixel_grid_shape,
+                                              lat_name=lat_name, lon_name=lon_name)
+        ncdf_dates.append(getattr(f, date_name))
+        indexes.append(i)
+        flag_list.append(flag)
+    
+    # currently my code which removes images from the same date relies on the images being sorted in date order ...
+    flag_list_sorted = [x for _, x in sorted(zip(ncdf_dates, flag_list))]
+    sorted_dates = sorted(ncdf_dates)
+    flag_df = None
+    for i in range(len(flag_list_sorted)):
+        flag = flag_list_sorted[i]
+        date = sorted_dates[i]
+
+        df_tmp = flag.copy()
+        df_tmp['Date'] = pd.to_datetime(date, utc=False)
+        if dateOnly:
+            df_tmp['Date'] = df_tmp['Date'].dt.date # just removes the time aspect from the variable
+        df_tmp.set_index(['Date'], inplace=True)
+        if flag_df is None:
+            flag_df = df_tmp.copy()
+        else:
+            flag_df = pd.concat([flag_df, df_tmp])
+
+    # don't really need to sort, but in case I change something its good to have:
+    return flag_df.sort_values(['Date'])
 
 def load_SD_summarise_multiple_DALEC_days(DALEC_directory, RSR_doves_file='non-DALEC-data/RSR-Superdove.csv',
                                           file_names=None, dalec_summary_function=dalecLoad.uniform_grid_spectra_mean,

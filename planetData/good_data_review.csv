@@ -1,0 +1,111 @@
+filename,atmospheric interference at measurement points,flag,matches with planet udm
+/20220924_102733_83_2429_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220914_102316_96_2448_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220419_104711_48_2276_3B_AnalyticMS_8b_clip.tif,good,good,no
+/20220910_110421_57_249c_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220914_102314_67_2448_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220811_102821_27_2427_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220618_105818_44_249a_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220820_102647_50_2436_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220419_104713_76_2276_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220524_112108_37_2402_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220620_102924_31_2423_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220915_110304_49_24a5_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,yes
+/20220813_111341_99_227a_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220910_110423_85_249c_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220424_111656_16_2407_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,yes
+/20220817_110356_00_2482_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220920_105811_81_2495_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,yes
+/20220913_102534_05_241d_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220811_102823_56_2427_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220704_111657_22_2402_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220423_102657_03_2453_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,yes
+/20220524_112106_08_2402_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220920_105809_51_2495_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,yes
+/20220810_102706_17_2432_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220605_111555_14_2274_3B_AnalyticMS_8b_clip.tif,possible haze,blur,no
+/20220604_110430_92_2446_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220710_110152_14_247e_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220817_110358_26_2482_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220912_110206_64_247f_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220912_110204_35_247f_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220707_110417_27_2481_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220924_104649_13_2251_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220423_102659_32_2453_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,yes
+/20220429_111304_58_2416_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220604_102336_40_2436_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220920_110455_06_247b_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,yes
+/20220827_110001_35_2499_3B_AnalyticMS_8b_clip.tif,haze,haze,yes
+/20220620_102922_02_2423_3B_AnalyticMS_8b_clip.tif,good,good,
+/20220707_110419_56_2481_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230908_111006_51_2438_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230908_111008_63_2438_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230708_102951_29_242d_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230721_103437_99_24b3_3B_AnalyticMS_8b_clip.tif,unsure,unsure,no
+/20231011_103123_96_2459_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230721_103440_28_24b3_3B_AnalyticMS_8b_clip.tif,unsure,unsure,no
+/20230907_111146_58_247f_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230826_110649_57_2477_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230721_103546_21_24c4_3B_AnalyticMS_8b_clip.tif,possible shadow,unsure,yes
+/20230907_103039_40_2448_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230622_110743_09_2488_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230901_102501_45_2451_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,yes
+/20230701_111015_04_248c_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230912_103201_88_2415_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230701_111012_94_248c_3B_AnalyticMS_8b_clip.tif,good,good,
+/20231001_111051_14_2483_3B_AnalyticMS_8b_clip.tif,bad,shadow,yes
+/20230912_111116_87_2475_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230903_103633_24_24a8_3B_AnalyticMS_8b_clip.tif,hazy,blur,no
+/20230831_111137_87_248f_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,no
+/20230712_110526_63_248c_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230712_103147_74_24bf_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230911_103046_44_24b2_3B_AnalyticMS_8b_clip.tif,hazy,haze,no
+/20230826_110647_40_2477_3B_AnalyticMS_8b_clip.tif,good,good,
+/20230622_103034_08_24bc_3B_AnalyticMS_8b_clip.tif,cloud,cloud,no
+/20230901_102503_55_2451_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,yes
+/20230831_111140_04_248f_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,yes
+/20230824_102843_49_2455_3B_AnalyticMS_8b_clip.tif,cloud,cloud,no
+/20230907_111144_43_247f_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230522_110454_17_248e_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230407_102929_63_24c4_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230420_102455_38_2460_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230419_110631_28_247f_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230407_102927_33_24c4_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230613_102604_33_241e_3B_AnalyticMS_8b_clip.tif,hazy,blur,no
+/20230530_110447_41_2486_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230525_102954_44_24d0_3B_AnalyticMS_8b_clip.tif,possible shadow or haze,good,yes
+/20230613_102533_50_2451_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230415_102927_80_24b0_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230408_110119_93_24a4_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230421_110135_31_248c_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230414_102822_97_2439_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,yes
+/20230420_102453_19_2460_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230418_110451_89_249c_3B_AnalyticMS_8b_clip.tif,haze/cloud,cloud,no
+/20230421_110133_15_248c_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230616_102635_77_2459_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230529_102147_63_242b_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230609_110806_88_2470_3B_AnalyticMS_8b_clip.tif,haze,blur,no
+/20230530_102018_50_2459_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230604_102656_74_2440_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230418_110653_35_2486_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230403_105030_78_2262_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230616_102924_87_24b9_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230421_102328_33_2451_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230610_103116_22_24c8_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230604_102555_27_2420_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230414_110147_85_248b_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230604_102658_81_2440_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230603_102950_65_24c3_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230526_103007_64_24ca_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230526_101929_20_2460_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230516_103033_96_24b4_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230603_102952_98_24c3_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230422_110321_59_249c_3B_AnalyticMS_8b_clip.tif,shadow on both coords,shadow,no
+/20230614_112214_26_2402_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230507_110503_08_247a_3B_AnalyticMS_8b_clip.tif,cloud/haze,unsure,no
+/20230418_110449_73_249c_3B_AnalyticMS_8b_clip.tif,cloud/haze,unsure,no
+/20230602_102855_95_24c9_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230530_102020_67_2459_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230415_102433_11_2465_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230415_102430_94_2465_3B_AnalyticMS_8b_clip.tif,good,good,yes
+/20230403_105032_82_2262_3B_AnalyticMS_8b_clip.tif,good,good,yes

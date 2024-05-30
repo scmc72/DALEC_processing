@@ -1,0 +1,20 @@
+<graph id="Subset_test">
+    <version>1.0</version>
+    <node id="Subset">
+      <operator>Subset</operator>
+      <sources>
+        <sourceProduct>${sourceProduct}</sourceProduct>
+      </sources>
+      <parameters>
+        <sourceBands/>
+        <tiePointGrids/>
+        <region>0,0,0,0</region>
+        <referenceBand/>
+        <geoRegion>POLYGON((-3.9265183347921484 56.14968843253692,-3.9109829801778906 56.14968843253692,-3.9109829801778906 56.14313792528361,-3.9265183347921484 56.14313792528361,-3.9265183347921484 56.14968843253692))</geoRegion>
+        <subSamplingX>1</subSamplingX>
+        <subSamplingY>1</subSamplingY>
+        <fullSwath>false</fullSwath>
+        <copyMetadata>true</copyMetadata>
+      </parameters>
+    </node>
+</graph>

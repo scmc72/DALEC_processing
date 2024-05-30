@@ -1,0 +1,70 @@
+<graph id="Subset_test">
+    <version>1.0</version>
+    <node id="resample-s2">
+      <operator>Resample</operator>
+      <sources>
+        <sourceProduct>${sourceProduct}</sourceProduct>
+      </sources>
+      <parameters>
+        <targetResolution>${resolution}</targetResolution>
+        <upsampling>${up}</upsampling>
+        <downsampling>${down}</downsampling>
+        <flagDownsampling>${flag}</flagDownsampling>
+        <resampleOnPyramidLevels>false</resampleOnPyramidLevels>
+      </parameters>
+    </node>
+    <node id="Subset">
+      <operator>Subset</operator>
+      <sources>
+        <sourceProduct refid="resample-s2"/>
+      </sources>
+      <parameters>
+        <sourceBands/>
+        <tiePointGrids/>
+        <region>0,0,0,0</region>
+        <referenceBand/>
+        <geoRegion>POLYGON((-3.9265183347921484 56.14968843253692,-3.9109829801778906 56.14968843253692,-3.9109829801778906 56.14313792528361,-3.9265183347921484 56.14313792528361,-3.9265183347921484 56.14968843253692))</geoRegion>
+        <subSamplingX>1</subSamplingX>
+        <subSamplingY>1</subSamplingY>
+        <fullSwath>false</fullSwath>
+        <copyMetadata>true</copyMetadata>
+      </parameters>
+    </node>
+    <node id="c2rcc">
+      <operator>c2rcc.msi</operator>
+      <sources>
+        <sourceProduct refid="Subset"/>
+      </sources>
+      <parameters>
+        <validPixelExpression>${validPix}</validPixelExpression>
+        <salinity>${salinity}</salinity>
+        <temperature>${temp}</temperature>
+        <ozone>${ozone}</ozone>
+        <press>${press}</press>
+        <elevation>${elevation}</elevation>
+        <TSMfac>${TSMfac}</TSMfac>
+        <TSMexp>${TSMexp}</TSMexp>
+        <CHLexp>${CHLexp}</CHLexp>
+        <CHLfac>${CHLfac}</CHLfac>
+        <thresholdRtosaOOS>${rtosaThresh}</thresholdRtosaOOS>
+        <thresholdAcReflecOos>${ACrefOOS}</thresholdAcReflecOos>
+        <thresholdCloudTDown865>${cloud865}</thresholdCloudTDown865>
+        <netSet>${NN_Set}</netSet>
+        <outputAsRrs>${outputAsRrs}</outputAsRrs>
+        <deriveRwFromPathAndTransmittance>${deriveRwFromPathAndTransmittance}</deriveRwFromPathAndTransmittance>
+        <useEcmwfAuxData>${useEcmwfAuxData}</useEcmwfAuxData>
+        <outputRtoa>${outputRtoa}</outputRtoa>
+        <outputRtosaGc>${outputRtosaGc}</outputRtosaGc>
+        <outputRtosaGcAann>${outputRtosaGcAann}</outputRtosaGcAann>
+        <outputRpath>${outputRpath}</outputRpath>
+        <outputTdown>${outputTdown}</outputTdown>
+        <outputTup>${outputTup}</outputTup>
+        <outputAcReflectance>${outputAcReflectance}</outputAcReflectance>
+        <outputRhown>${outputRhown}</outputRhown>
+        <outputOos>${outputOos}</outputOos>
+        <outputKd>${outputKd}</outputKd>
+        <outputUncertainties>${outputUncertainties}</outputUncertainties>
+      </parameters>
+    </node>
+</graph>
+
