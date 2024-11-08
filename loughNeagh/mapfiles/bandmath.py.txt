@@ -1,0 +1,1 @@
+10 ^ (0.65474 - -2.91864 * log10(max("20240801_114305_91_24fd_3B_AnalyticMS_8b_clip@1", "20240801_114305_91_24fd_3B_AnalyticMS_8b_clip@2")/"20240801_114305_91_24fd_3B_AnalyticMS_8b_clip@4"))

@@ -98,9 +98,11 @@ def get_SD_NC_Spectra_grid(NC_file, lat_pt, lon_pt, shape=(3, 3), variable='rhos
     return df1
 
 def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1),
-                      div_by_pi=True, skipSameDay=True,
+                      div_by_pi=True, skipSameDay=True, u_int_16=False,
                       dateOnly=False, filetype="L2R.nc", variable='rhos',
+                      wavelengths_planet=None,
                       wavelengths_S2A=None, wavelengths_S2B=None, date_name='isodate',
+                      planet_SR_date=False, datetime_format=None,
                       lat_name='lat', lon_name='lon'):
     '''
     Loads all L2R netcdfs in a given directory. Then extracts a grid of shape=pixel_grid_shape at the given coord
@@ -125,10 +127,18 @@ def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1),
             wavelengths = wavelengths_S2A
         elif 'S2B' in SD_files[i]:
             wavelengths = wavelengths_S2B
+        elif wavelengths_planet is not None:
+            wavelengths = wavelengths_planet
+        else:
+            wavelengths=None
         SD_spect = get_SD_NC_Spectra_grid(f, coord[0], coord[1], shape=pixel_grid_shape,
                                           variable=variable, wavelengths=wavelengths,
                                           lat_name=lat_name, lon_name=lon_name)
-        ncdf_dates.append(getattr(f, date_name))
+        if not planet_SR_date:
+            ncdf_dates.append(getattr(f, date_name))
+        else:
+            # planet SR stores the date in annoying place, so easiest just to have a case for it
+            ncdf_dates.append(f.groups['Metadata_Group'].groups['Image_info'].TIFFTAG_DATETIME)
         indexes.append(i)
         SD_spect_list.append(SD_spect)
     
@@ -147,7 +157,7 @@ def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1),
                   ' (set skipSameDay=False to disable this)')
         else:
             SD_df_tmp = SD_spect.copy()
-            SD_df_tmp['Date'] = pd.to_datetime(date, utc=False)
+            SD_df_tmp['Date'] = pd.to_datetime(date, utc=False, format=datetime_format)
             if dateOnly:
                 SD_df_tmp['Date'] = SD_df_tmp['Date'].dt.date # just removes the time aspect from the variable
             SD_df_tmp.set_index(['Date', 'Wavelength'], inplace=True)
@@ -158,6 +168,10 @@ def load_multiple_SDs(SD_directory, coord, pixel_grid_shape=(1, 1),
 
     if div_by_pi:
         SD_df = SD_df.div(np.pi)
+    
+    if u_int_16:
+        # use this option for planet SR products which come in unsigned 16 bit int format
+        SD_df = SD_df.div((2**16) - 1)
     # don't really need to sort, but in case I change something its good to have:
     return SD_df.sort_values(['Date', 'Wavelength'])
 
